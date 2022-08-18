@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\AlternatifController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +42,13 @@ Route::controller(loginController::class)->group(function(){
 });
 
 // kriteria
-// Route::resource('/kriteria', KriteriaController::class)->except('show','store')->middleware('auth');
+ Route::resource('/kriteria', KriteriaController::class)->except('show')->middleware('auth');
 
 // kategori
-Route::resource('/kategori', KategoriController::class)->middleware('auth');
+Route::resource('/kategori', KategoriController::class)->except('show')->middleware('auth');
+
+// alternatif
+Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
+
+// mahasiswa
+Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');

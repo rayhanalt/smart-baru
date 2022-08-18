@@ -29,6 +29,7 @@
                         </div>
                     @endif
                     <div @if (auth()->user()) class="ml-5" @endif data-aos="slide-down">
+
                         <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
                     </div>
                 </div>
@@ -108,8 +109,10 @@
                         href="/kriteria">Kriteria</a></li>
                 <li><a class="{{ Request::is('kategori*') ? 'active hover:bg-sky-700' : '' }}"
                         href="/kategori">Kategori</a></li>
-                <li><a>Alternatif</a></li>
-                <li><a>Mahasiswa</a></li>
+                <li><a class="{{ Request::is('alternatif*') ? 'active hover:bg-sky-700' : '' }}"
+                        href="/alternatif">Alternatif</a></li>
+                <li><a class="{{ Request::is('mahasiswa*') ? 'active hover:bg-sky-700' : '' }}"
+                        href="/mahasiswa">Mahasiswa</a></li>
 
             </ul>
         </div>

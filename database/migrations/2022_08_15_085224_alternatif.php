@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('kode_alternatif')->unique();
             $table->string('nama_alternatif');
             $table->string('kode_kategori');
-            $table->integer('bobot');
             $table->timestamps();
         });
     }

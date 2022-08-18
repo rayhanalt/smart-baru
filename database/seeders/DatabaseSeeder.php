@@ -28,20 +28,20 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Rayhan Althaf',
             'password' => bcrypt('12345'),
         ]);
-        kriteria::create([
-            'kode_kriteria' => 'KD-001',
-            'nama_kriteria' => 'Minat',
-            'bobot' => '0.63',
-        ]);
-        kriteria::create([
-            'kode_kriteria' => 'KD-002',
-            'nama_kriteria' => 'Bakat',
-            'bobot' => '0.26',
-        ]);
-        kriteria::create([
-            'kode_kriteria' => 'KD-003',
-            'nama_kriteria' => 'Pengalaman',
-            'bobot' => '0.11',
-        ]);
+        // kriteria::create([
+        //     'kode_kriteria' => 'KD-001',
+        //     'nama_kriteria' => 'Minat',
+        //     'bobot' => '0.63',
+        // ]);
+        // kriteria::create([
+        //     'kode_kriteria' => 'KD-002',
+        //     'nama_kriteria' => 'Bakat',
+        //     'bobot' => '0.26',
+        // ]);
+        // kriteria::create([
+        //     'kode_kriteria' => 'KD-003',
+        //     'nama_kriteria' => 'Pengalaman',
+        //     'bobot' => '0.11',
+        // ]);
     }
 }

@@ -10,26 +10,28 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nama Kategori</th>
+                        <th>Nama Alternatif</th>
+                        <th>Kategori</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- row 1 -->
-                    @foreach ($kategori as $item)
+                    @foreach ($alternatif as $item)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $item->nama_kategori }}</td>
+                            <td>{{ $item->nama_alternatif }}</td>
+                            <td>{{ $item->kategori->nama_kategori }}</td>
                             <td class="flex place-content-center text-center">
-                                <a href="/kategori/{{ $item->kode_kategori }}/edit"
+                                <a href="/alternatif/{{ $item->kode_alternatif }}/edit"
                                     class="btn btn-outline btn-success btn-sm mr-1">
                                     ✎
                                 </a>
-                                <form action="/kategori/{{ $item->kode_kategori }}" method="POST">
+                                <form action="/alternatif/{{ $item->kode_alternatif }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-outline btn-error btn-sm"
-                                        onclick="return confirm('yakin hapus data {{ $item->nama_kategori }} ?')">
+                                        onclick="return confirm('yakin hapus data {{ $item->nama_alternatif }} ?')">
                                         🗑
                                     </button>
                                 </form>
@@ -46,18 +48,35 @@
     <div class="modal">
         <div class="modal-box relative">
             <label for="modal-create" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 class="text-lg font-bold">Tambah Data Kategori</h3>
+            <h3 class="text-lg font-bold">Tambah Data Alternatif</h3>
             <hr>
-            <form action="/kategori" method="POST" class="mt-1" enctype="multipart/form-data">
+            <form action="/alternatif" method="POST" class="mt-1" enctype="multipart/form-data">
                 @csrf
+
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text">Nama Kategori</span>
+                        <span class="label-text">Nama Alternatif</span>
                     </label>
-                    <input type="text" name="nama_kategori" value="{{ old('nama_kategori') }}" placeholder="Type here.."
-                        class="input input-sm input-bordered">
+                    <input type="text" name="nama_alternatif" value="{{ old('nama_alternatif') }}"
+                        placeholder="Type here.." class="input input-sm input-bordered">
                     <label class="label">
-                        @error('nama_kategori')
+                        @error('nama_alternatif')
+                            <span class="label-text-alt text-red-500">{{ $message }}</span>
+                        @enderror
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Kategori</span>
+                    </label>
+                    <select class="select select-sm select-bordered" name="kode_kategori">
+                        <option disabled selected>Pick one</option>
+                        @foreach ($kategori as $item)
+                            <option value="{{ $item->kode_kategori }}">{{ $item->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                    <label class="label">
+                        @error('kode_kategori')
                             <span class="label-text-alt text-red-500">{{ $message }}</span>
                         @enderror
                     </label>

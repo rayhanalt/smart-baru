@@ -6,7 +6,7 @@
         @csrf
         <div class="form-control">
             <label class="label">
-                <span class="label-text">Nama Kriteria</span>
+                <span class="label-text">Nama Kategori</span>
             </label>
             <input type="text" name="nama_kategori" value="{{ old('nama_kategori', $item->nama_kategori) }}"
                 placeholder="Type here.." class="input input-sm input-bordered">

@@ -11,25 +11,27 @@
                     <tr>
                         <th></th>
                         <th>Nama Kategori</th>
+                        <th>Bobot</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- row 1 -->
-                    @foreach ($kategori as $item)
+                    @foreach ($kriteria as $item)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $item->nama_kategori }}</td>
+                            <td>{{ $item->nama_kriteria }}</td>
+                            <td>{{ $item->bobot }}</td>
                             <td class="flex place-content-center text-center">
-                                <a href="/kategori/{{ $item->kode_kategori }}/edit"
+                                <a href="/kriteria/{{ $item->kode_kriteria }}/edit"
                                     class="btn btn-outline btn-success btn-sm mr-1">
                                     ✎
                                 </a>
-                                <form action="/kategori/{{ $item->kode_kategori }}" method="POST">
+                                <form action="/kriteria/{{ $item->kode_kriteria }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-outline btn-error btn-sm"
-                                        onclick="return confirm('yakin hapus data {{ $item->nama_kategori }} ?')">
+                                        onclick="return confirm('yakin hapus data {{ $item->nama_kriteria }} ?')">
                                         🗑
                                     </button>
                                 </form>
@@ -46,18 +48,30 @@
     <div class="modal">
         <div class="modal-box relative">
             <label for="modal-create" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 class="text-lg font-bold">Tambah Data Kategori</h3>
+            <h3 class="text-lg font-bold">Tambah Data Kriteria</h3>
             <hr>
-            <form action="/kategori" method="POST" class="mt-1" enctype="multipart/form-data">
+            <form action="/kriteria" method="POST" class="mt-1" enctype="multipart/form-data">
                 @csrf
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text">Nama Kategori</span>
+                        <span class="label-text">Nama Kriteria</span>
                     </label>
-                    <input type="text" name="nama_kategori" value="{{ old('nama_kategori') }}" placeholder="Type here.."
+                    <input type="text" name="nama_kriteria" value="{{ old('nama_kriteria') }}" placeholder="Type here.."
                         class="input input-sm input-bordered">
                     <label class="label">
-                        @error('nama_kategori')
+                        @error('nama_kriteria')
+                            <span class="label-text-alt text-red-500">{{ $message }}</span>
+                        @enderror
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Bobot</span>
+                    </label>
+                    <input type="text" name="bobot" value="{{ old('bobot') }}" placeholder="Type here.."
+                        class="input input-sm input-bordered">
+                    <label class="label">
+                        @error('bobot')
                             <span class="label-text-alt text-red-500">{{ $message }}</span>
                         @enderror
                     </label>

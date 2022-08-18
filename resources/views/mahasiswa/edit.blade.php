@@ -1,0 +1,36 @@
+@extends('home')
+
+@section('content')
+    <form action="/mahasiswa/{{ $item->nim }}" method="POST" class="mt-1" enctype="multipart/form-data">
+        @method('put')
+        @csrf
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">NIM</span>
+            </label>
+            <input type="text" name="nim" value="{{ old('nim', $item->nim) }}" placeholder="Type here.."
+                class="input input-sm input-bordered">
+            <label class="label">
+                @error('nim')
+                    <span class="label-text-alt text-red-500">{{ $message }}</span>
+                @enderror
+            </label>
+        </div>
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">Nama Mahasiswa</span>
+            </label>
+            <input type="text" name="nama" value="{{ old('nama', $item->nama) }}" placeholder="Type here.."
+                class="input input-sm input-bordered">
+            <label class="label">
+                @error('nama')
+                    <span class="label-text-alt text-red-500">{{ $message }}</span>
+                @enderror
+            </label>
+        </div>
+        <div class="mt-2 flex justify-end">
+            <button type="reset" class="btn btn-outline btn-error btn-sm">reset</button>
+            <button class="btn btn-outline btn-success btn-sm ml-2">Simpan</button>
+        </div>
+    </form>
+@endsection
