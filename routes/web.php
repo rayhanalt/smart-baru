@@ -1,12 +1,12 @@
 <?php
 
+use App\Models\mahasiswa;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
-use App\Models\mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
