@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 
 class MahasiswaController extends Controller
 {
@@ -26,7 +27,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mahasiswa.create',[
+            'mahasiswa' => mahasiswa::get()
+        ]);
     }
 
     /**
@@ -38,12 +41,14 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validasi = $request->validate([
-            'nim' => 'required|numeric',
+            'nim' => 'required|size:9|unique:mahasiswa',
             'nama' => 'required',
         ]);
-        mahasiswa::create($validasi);
+      
+           mahasiswa::create($validasi);
+           return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
+    
         
-        return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
     }
 
     /**
@@ -67,7 +72,7 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa.edit',[
             'item' => $mahasiswa,
-            'mahasiswa' => mahasiswa::all()
+            'mahasiswa' => mahasiswa::get()
         ]);
     }
 
@@ -80,10 +85,17 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, mahasiswa $mahasiswa)
     {
-        $validasi = $request->validate([
-            'nim' => 'required|numeric',
-            'nama' => 'required',
-        ]);
+
+        $rules = [
+            'nim' => 'required|size:9',
+            'nama' => 'required'
+        ];
+        if($request->nim != $mahasiswa->nim)
+        {
+            $rules['nim'] = 'required|size:9|unique:mahasiswa';
+        }
+        $validasi = $request->validate($rules);
+       
         $mahasiswa->update($validasi);
         
         return redirect('/mahasiswa')->with('success', 'Data has been updated!')->withInput();

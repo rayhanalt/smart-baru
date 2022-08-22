@@ -15,7 +15,7 @@ class KategoriController extends Controller
     public function index()
     {
         return view('kategori.index',[
-            'kategori' => kategori::all()
+            'kategori' => kategori::get()
         ]);
     }
 
@@ -26,7 +26,9 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.create',[
+            'kategori' => kategori::get()
+        ]);
     }
 
     /**
@@ -66,7 +68,7 @@ class KategoriController extends Controller
     {
         return view('kategori.edit',[
             'item' => $kategori,
-            'kategori' => kategori::all()
+            'kategori' => kategori::get()
         ]);
     }
 

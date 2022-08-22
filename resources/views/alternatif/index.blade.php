@@ -1,7 +1,7 @@
 @extends('home')
 @section('content')
     <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
-        <label for="modal-create" class="btn btn-outline btn-primary btn-sm">➕ Data</label>
+        <a href="/alternatif/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
     </div>
     <div data-aos="slide-up" class="top-32 right-10 left-10 w-auto">
         <div class="h-[470px] overflow-auto">
@@ -40,52 +40,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-    {{-- Modal Create --}}
-    <input type="checkbox" id="modal-create" class="modal-toggle" @error('username') checked @enderror
-        @error('nama') checked @enderror>
-    <div class="modal">
-        <div class="modal-box relative">
-            <label for="modal-create" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 class="text-lg font-bold">Tambah Data Alternatif</h3>
-            <hr>
-            <form action="/alternatif" method="POST" class="mt-1" enctype="multipart/form-data">
-                @csrf
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Nama Alternatif</span>
-                    </label>
-                    <input type="text" name="nama_alternatif" value="{{ old('nama_alternatif') }}"
-                        placeholder="Type here.." class="input input-sm input-bordered">
-                    <label class="label">
-                        @error('nama_alternatif')
-                            <span class="label-text-alt text-red-500">{{ $message }}</span>
-                        @enderror
-                    </label>
-                </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Kategori</span>
-                    </label>
-                    <select class="select select-sm select-bordered" name="kode_kategori">
-                        <option disabled selected>Pick one</option>
-                        @foreach ($kategori as $item)
-                            <option value="{{ $item->kode_kategori }}">{{ $item->nama_kategori }}</option>
-                        @endforeach
-                    </select>
-                    <label class="label">
-                        @error('kode_kategori')
-                            <span class="label-text-alt text-red-500">{{ $message }}</span>
-                        @enderror
-                    </label>
-                </div>
-                <div class="mt-2 flex justify-end">
-                    <button type="reset" class="btn btn-outline btn-error btn-sm">reset</button>
-                    <button class="btn btn-outline btn-success btn-sm ml-2">Simpan</button>
-                </div>
-            </form>
         </div>
     </div>
 @endsection

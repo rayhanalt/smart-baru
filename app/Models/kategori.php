@@ -29,6 +29,6 @@ class kategori extends Model
     }
     public function alternatif()
     {
-        return $this->hasMany(alternatif::class,'kode_kategori' , 'kode_kategori');
+        return $this->hasOne(alternatif::class,'kode_kategori' , 'kode_kategori');
     }
 }

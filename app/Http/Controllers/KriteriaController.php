@@ -15,7 +15,7 @@ class KriteriaController extends Controller
     public function index()
     {
         return view('kriteria.index',[
-            'kriteria' => kriteria::all()
+            'kriteria' => kriteria::get()
         ]);
     }
 
@@ -26,7 +26,9 @@ class KriteriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('kriteria.create',[
+            'kriteria' => kriteria::get()
+        ]);
     }
 
     /**
@@ -67,7 +69,7 @@ class KriteriaController extends Controller
     {
         return view('kriteria.edit',[
             'item' => $kriterium,
-            'kriteria' => kriteria::all()
+            'kriteria' => kriteria::get()
         ]);
     }
 

@@ -16,8 +16,7 @@ class AlternatifController extends Controller
     public function index()
     {
         return view('alternatif.index',[
-            'alternatif' => alternatif::all(),
-            'kategori' => kategori::all(),
+            'alternatif' => alternatif::with('kategori')->get(),      
         ]);
     }
 
@@ -28,7 +27,10 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        //
+        return view('alternatif.create',[
+            'alternatif' => alternatif::get(),
+            'kategori' => kategori::get()
+        ]);
     }
 
     /**
@@ -69,8 +71,9 @@ class AlternatifController extends Controller
     {
         return view('alternatif.edit',[
             'item' => $alternatif,
-            'alternatif' => alternatif::all(),
-            'kategori' => kategori::all()
+            'alternatif' => alternatif::get(),
+            'kategori' => kategori::get()
+           
         ]);
     }
 

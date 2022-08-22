@@ -11,7 +11,6 @@ class alternatif extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'alternatif';
-    protected $with = 'kategori';
     public function getRouteKeyName()
     {
         return 'kode_alternatif';

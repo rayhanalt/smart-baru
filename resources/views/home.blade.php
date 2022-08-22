@@ -56,15 +56,15 @@
             </div>
 
             @if (session()->has('blocked'))
-                <div class="fixed flex py-6 font-mono">
-                    <div data-aos="slide-left" class="alert alert-error fixed right-2 bottom-20 w-52 shadow-lg">
+                <div class="fixed flex py-4 font-mono">
+                    <div data-aos="slide-left" class="alert alert-danger fixed right-2 bottom-20 w-52 shadow-lg">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 stroke-current"
                                 fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span> {{ session('blocked') }}</span>
+                            <span> {{ session('success') }}</span>
                             <script>
                                 setTimeout(function() {
                                     window.location.replace('{{ url()->current() }}');
