@@ -6,6 +6,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
+use App\Models\mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,14 @@ Route::get('/loginpage', function(){
 
 // home
 Route::get('/', function () {
-    return view('home');
+    return view('mahasiswa.create',[
+        'mahasiswa' => mahasiswa::get()
+    ]);
 });
 Route::get('/home', function () {
-    return view('home');
+    return view('mahasiswa.create',[
+        'mahasiswa' => mahasiswa::get()
+    ]);
 });
 
 
@@ -51,4 +56,4 @@ Route::resource('/kategori', KategoriController::class)->except('show')->middlew
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
 
 // mahasiswa
-Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');
+Route::resource('/mahasiswa', MahasiswaController::class)->except('show','create')->middleware('auth');

@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nama Kategori</th>
+                        <th>Nama Kriteria</th>
                         <th>Bobot</th>
                         <th class="text-center">Action</th>
                     </tr>

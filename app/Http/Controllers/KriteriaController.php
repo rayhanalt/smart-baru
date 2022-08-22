@@ -41,7 +41,7 @@ class KriteriaController extends Controller
     {
         $validasi = $request->validate([
             'nama_kriteria' => 'required',
-            'bobot' => 'required',
+            'bobot' => 'required|numeric',
         ]);
         kriteria::create($validasi);
        
@@ -84,7 +84,7 @@ class KriteriaController extends Controller
     {
         $validasi = $request->validate([
             'nama_kriteria' => 'required',
-            'bobot' => 'required',
+            'bobot' => 'required|numeric',
         ]);
         $kriterium->update($validasi);
        
