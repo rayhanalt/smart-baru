@@ -28,6 +28,7 @@ class AlurController extends Controller
             return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
     }
+    
     public function hapus(Request $request)
     {
         $request->session()->forget('alur');
