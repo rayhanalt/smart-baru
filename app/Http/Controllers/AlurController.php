@@ -24,10 +24,8 @@ class AlurController extends Controller
         }
         else
         {
-           
-                session()->put('alur',''.$request->nim.' sebagai '.$request->nama.'');
-            
-           return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
+            session()->put('alur',''.$request->nim.' sebagai '.$request->nama.'');   
+            return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
     }
     public function hapus(Request $request)
