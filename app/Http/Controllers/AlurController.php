@@ -24,11 +24,11 @@ class AlurController extends Controller
         }
         else
         {
-            session()->put('alur',''.$request->nim.' '.$request->nama.'');   
+            session()->put('alur',''.$request->nim.' '.$input->nama.'');   
             return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
     }
-    
+
     public function hapus(Request $request)
     {
         $request->session()->forget('alur');
