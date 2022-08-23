@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Unique;
 
 class AlurController extends Controller
 {
