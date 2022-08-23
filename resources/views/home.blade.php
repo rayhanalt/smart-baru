@@ -29,13 +29,14 @@
                         </div>
                     @endif
                     <div @if (auth()->user()) class="ml-5" @endif data-aos="slide-down">
-
                         <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
                     </div>
                 </div>
                 <div class="navbar-center">
                     @if (auth()->user())
                         <a class="text-xl normal-case">{{ auth()->user()->nama }}</a>
+                    @elseif (session()->has('alur'))
+                        {{ session()->get('alur') }}
                     @else
                         <p>Universitas Muhammadiyah Cirebon</p>
                     @endif
@@ -45,6 +46,11 @@
                         <form data-aos="zoom-in" action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Logout</button>
+                        </form>
+                    @elseif (session()->has('alur'))
+                        <form data-aos="zoom-in" action="/hapus" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-outline btn-error">Hapus Sesi</button>
                         </form>
                     @else
                         <a href="/loginpage" class="btn btn-outline btn-info">Login</a>
@@ -57,14 +63,14 @@
 
             @if (session()->has('blocked'))
                 <div class="fixed flex py-4 font-mono">
-                    <div data-aos="slide-left" class="alert alert-danger fixed right-2 bottom-20 w-52 shadow-lg">
+                    <div data-aos="slide-left" class="alert alert-error fixed right-2 bottom-20 w-52 shadow-lg">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 stroke-current"
                                 fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span> {{ session('success') }}</span>
+                            <span> {{ session('blocked') }}</span>
                             <script>
                                 setTimeout(function() {
                                     window.location.replace('{{ url()->current() }}');

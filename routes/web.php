@@ -7,6 +7,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\AlurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,25 @@ Route::get('/loginpage', function(){
 
 // home
 Route::get('/', function () {
-    return view('/home');
+    if(auth()->user())
+    {
+        return view('/home');    
+    }
+    elseif(!auth()->user())
+    {
+        return view('/spk/alur');
+    }
 });
+
 Route::get('/home', function () {
-    return view('/home');
+    if(auth()->user())
+    {
+        return view('/home');    
+    }
+    elseif(!auth()->user())
+    {
+        return view('/spk/alur');
+    }
 });
 
 
@@ -57,6 +73,12 @@ Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middl
 //spk
 Route::get('/spk/minat', function(){
 return view('spk/minat');
+})->middleware('guest');
+
+
+Route::controller(AlurController::class)->group(function(){
+    Route::post('/spk/alur', 'alur');
+    Route::get('/spk/alur', 'alur')->middleware('guest');
+    Route::post('/hapus', 'hapus');
+    Route::get('/hapus', 'hapus')->middleware('guest');
 });
-
-
