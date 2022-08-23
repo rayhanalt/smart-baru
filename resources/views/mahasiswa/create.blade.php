@@ -35,7 +35,7 @@
                     </div>
                     <div class="mt-2 flex justify-end">
                         <button type="reset" class="btn btn-outline btn-error btn-sm">reset</button>
-                        <button class="btn btn-outline btn-success btn-sm ml-2">Maju</button>
+                        <button class="btn btn-outline btn-success btn-sm ml-2">Simpan</button>
                     </div>
                 </form>
             </div>

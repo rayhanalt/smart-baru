@@ -40,12 +40,15 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            'nim' => 'required|size:9|unique:mahasiswa',
-            'nama' => 'required',
-        ]);
       
-           mahasiswa::create($validasi);
+        
+            $validasi = $request->validate([
+                'nim' => 'required|size:9|unique:mahasiswa',
+                'nama' => 'required',
+            ]);
+            mahasiswa::create($validasi);
+       
+      
            return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
     
         

@@ -1,5 +1,8 @@
 @extends('home')
 @section('content')
+    <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
+        <a href="/mahasiswa/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
+    </div>
     <div data-aos="slide-up" class="top-32 right-10 left-10 w-auto">
         <div class="h-[470px] overflow-auto">
             <table class="table w-full">
@@ -20,7 +23,8 @@
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->nama }}</td>
                             <td class="flex place-content-center text-center">
-                                <a href="/mahasiswa/{{ $item->nim }}/edit" class="btn btn-outline btn-success btn-sm mr-1">
+                                <a href="/mahasiswa/{{ $item->nim }}/edit"
+                                    class="btn btn-outline btn-success btn-sm mr-1">
                                     ✎
                                 </a>
                                 <form action="/mahasiswa/{{ $item->nim }}" method="POST">

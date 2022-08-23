@@ -26,14 +26,10 @@ Route::get('/loginpage', function(){
 
 // home
 Route::get('/', function () {
-    return view('mahasiswa.create',[
-        'mahasiswa' => mahasiswa::get()
-    ]);
+    return view('/home');
 });
 Route::get('/home', function () {
-    return view('mahasiswa.create',[
-        'mahasiswa' => mahasiswa::get()
-    ]);
+    return view('/home');
 });
 
 
@@ -56,4 +52,11 @@ Route::resource('/kategori', KategoriController::class)->except('show')->middlew
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
 
 // mahasiswa
-Route::resource('/mahasiswa', MahasiswaController::class)->except('show','create')->middleware('auth');
+Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');
+
+//spk
+Route::get('/spk/minat', function(){
+return view('spk/minat');
+});
+
+
