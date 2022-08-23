@@ -24,7 +24,7 @@ class AlurController extends Controller
         }
         else
         {
-            session()->put('alur',''.$request->nim.' sebagai '.$request->nama.'');   
+            session()->put('alur',''.$request->nim.' '.$request->nama.'');   
             return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
     }
