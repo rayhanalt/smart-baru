@@ -19,7 +19,7 @@
                     <!-- row 1 -->
                     @foreach ($mahasiswa as $item)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->nama }}</td>
                             <td class="flex place-content-center text-center">

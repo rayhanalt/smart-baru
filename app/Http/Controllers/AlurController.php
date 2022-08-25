@@ -19,13 +19,12 @@ class AlurController extends Controller
             ]);
             mahasiswa::create($validasi);
             session()->put('alur',''.$request->nim.' '.$request->nama.'');
-            return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
         else
         {
             session()->put('alur',''.$request->nim.' '.$input->nama.'');   
-            return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
         }
+        return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
     }
 
     public function hapus(Request $request)

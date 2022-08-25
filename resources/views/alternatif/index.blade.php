@@ -19,7 +19,7 @@
                     <!-- row 1 -->
                     @foreach ($alternatif as $item)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama_alternatif }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
                             <td class="flex place-content-center text-center">

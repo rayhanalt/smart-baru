@@ -19,7 +19,7 @@
                     <!-- row 1 -->
                     @foreach ($kriteria as $item)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama_kriteria }}</td>
                             <td>{{ $item->bobot }}</td>
                             <td class="flex place-content-center text-center">

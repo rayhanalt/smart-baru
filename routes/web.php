@@ -2,12 +2,13 @@
 
 use App\Models\mahasiswa;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SpkController;
+use App\Http\Controllers\AlurController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
-use App\Http\Controllers\AlurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,10 +72,15 @@ Route::resource('/alternatif', AlternatifController::class)->except('show')->mid
 Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');
 
 //spk
-Route::get('/spk/minat', function(){
-return view('spk/minat');
-})->middleware('guest');
 
+// Route::get('/spk/minat', function(){
+// return view('spk/minat');
+// })->middleware('guest');
+
+
+Route::controller(SpkController::class)->group(function(){
+    Route::get('/spk/minat', 'minat')->middleware('guest');
+});
 
 Route::controller(AlurController::class)->group(function(){
     Route::post('/spk/alur', 'alur');

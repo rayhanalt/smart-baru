@@ -18,7 +18,7 @@
                     <!-- row 1 -->
                     @foreach ($kategori as $item)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama_kategori }}</td>
                             <td class="flex place-content-center text-center">
                                 <a href="/kategori/{{ $item->kode_kategori }}/edit"
