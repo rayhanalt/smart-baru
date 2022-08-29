@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kriteria;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,19 @@ class AlurController extends Controller
                 'nama' => 'required',
             ]);
             mahasiswa::create($validasi);
-            session()->put('alur',''.$request->nim.' '.$request->nama.'');
+            session()->put([
+                'nim' => $request->nim,
+                'nama' => $request->nama,
+            ]);
         }
         else
         {
-            session()->put('alur',''.$request->nim.' '.$input->nama.'');   
+            session()->put([
+                'nim' => $request->nim,
+                'nama' => $input->nama,
+            ]);
         }
+        
         return redirect('/spk/minat')->with('success', 'Sesi pengambilan keputusan dimulai')->withInput();
     }
 
@@ -32,4 +40,5 @@ class AlurController extends Controller
         $request->session()->forget('alur');
         return redirect('/')->with('blocked', 'Sesi telah berakhir')->withInput();
     }
+   
 }

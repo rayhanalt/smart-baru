@@ -72,14 +72,9 @@ Route::resource('/alternatif', AlternatifController::class)->except('show')->mid
 Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');
 
 //spk
-
-// Route::get('/spk/minat', function(){
-// return view('spk/minat');
-// })->middleware('guest');
-
-
 Route::controller(SpkController::class)->group(function(){
     Route::get('/spk/minat', 'minat')->middleware('guest');
+    Route::post('/spk/minat', 'store')->middleware('guest');
 });
 
 Route::controller(AlurController::class)->group(function(){

@@ -35,8 +35,8 @@
                 <div class="navbar-center">
                     @if (auth()->user())
                         <a class="text-xl normal-case">{{ auth()->user()->nama }}</a>
-                    @elseif (session()->has('alur'))
-                        {{ session()->get('alur') }}
+                    @elseif (session()->has('nim'))
+                        {{ session()->get('nim') }} | {{ session()->get('nama') }}
                     @else
                         <p>Universitas Muhammadiyah Cirebon</p>
                     @endif
@@ -47,7 +47,7 @@
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Logout</button>
                         </form>
-                    @elseif (session()->has('alur'))
+                    @elseif (session()->has('nim'))
                         <form data-aos="zoom-in" action="/hapus" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Hapus Sesi</button>
