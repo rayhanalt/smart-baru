@@ -5,7 +5,7 @@
             <div class="card-body">
                 <h3 class="text-lg font-bold">Pilih Parameter</h3>
                 <hr>
-                <form action="/spk/minat" method="post">
+                <form action="/spk/spk/{{ $kriteria->kode_kriteria }}" method="post">
                     @csrf
                     <table class="table w-full">
                         {{-- head --}}
