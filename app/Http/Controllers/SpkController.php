@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\kategori;
-use App\Models\kategori_benefit;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
+use App\Models\kategori_benefit;
 
 class SpkController extends Controller
 {
@@ -45,7 +45,10 @@ class SpkController extends Controller
                 return redirect("/spk/spk/{$kode_kriteria_terakhir}")->with('success', 'New Data has been added!')->withInput();
             } else if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria) {
                 // Hitung
-                dd("Hitung ges");
+
+                return view("spk/coba", [
+                    'katben' => kategori_benefit::with('mahasiswa', 'kriteria', 'kategori')->where('nim', '=', session('nim'))->get()
+                ]);
             }
         }
 
