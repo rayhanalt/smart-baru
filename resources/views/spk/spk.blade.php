@@ -26,16 +26,15 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         {{ $item->nama_kategori }}
-                                        <input type="hidden" name="[]">
                                     </td>
                                     <td>
                                         <select class="select select-bordered select-sm w-full max-w-xs"
                                             name="nilai_parameter[{{ $item->kode_kategori }}]">
                                             <option disabled selected>Pilih untuk {{ $item->nama_kategori }}</option>
-                                            <option value="0.2">Sangat</option>
-                                            <option value="0.4">Biasa</option>
-                                            <option value="0.8">Kurang</option>
-                                            <option value="1">Tidak</option>
+                                            <option value="1">Sangat</option>
+                                            <option value="0.8">Biasa</option>
+                                            <option value="0.4">Kurang</option>
+                                            <option value="0.2">Tidak</option>
                                         </select>
                                     </td>
                                 </tr>

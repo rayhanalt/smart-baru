@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\kategori_benefit;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class mahasiswa extends Model
 {
@@ -14,5 +15,9 @@ class mahasiswa extends Model
     public function getRouteKeyName()
     {
         return 'nim';
+    }
+    public function kategori_benefit()
+    {
+        return $this->hasMany(kategori_benefit::class, 'nim', 'nim');
     }
 }

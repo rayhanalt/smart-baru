@@ -29,14 +29,14 @@ class kategori_benefit extends Model
     }
     public function kategori()
     {
-        return $this->hasMany(kategori::class, 'kode_kategori', 'kode_kategori');
+        return $this->belongsTo(kategori::class, 'kode_kategori', 'kode_kategori');
     }
     public function kriteria()
     {
-        return $this->hasMany(kriteria::class, 'kode_kriteria', 'kode_kriteria');
+        return $this->belongsTo(kriteria::class, 'kode_kriteria', 'kode_kriteria');
     }
     public function mahasiswa()
     {
-        return $this->hasMany(mahasiswa::class, 'nim', 'nim');
+        return $this->belongsTo(mahasiswa::class, 'nim', 'nim');
     }
 }

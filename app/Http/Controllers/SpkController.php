@@ -6,7 +6,6 @@ use App\Models\kategori;
 use App\Models\kategori_benefit;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class SpkController extends Controller
 {
