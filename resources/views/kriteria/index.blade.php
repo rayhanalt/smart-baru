@@ -3,7 +3,7 @@
     <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
         <a href="/kriteria/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
     </div>
-    <div data-aos="slide-up" class="top-32 right-10 left-10 w-auto">
+    <div class="top-32 right-10 left-10 w-auto">
         <div class="h-[470px] overflow-auto">
             <table class="table w-full">
                 {{-- head --}}

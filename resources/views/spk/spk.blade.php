@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-    <div class="mt-20 flex place-content-center">
+    <div class="flex place-content-center">
         <div class="card bg-base-100 w-auto shadow-xl lg:w-1/2">
             <div class="card-body">
                 <h3 class="text-lg font-bold">Pilih Parameter</h3>

@@ -15,7 +15,7 @@
         <input id="my-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content">
             <!-- Page content here -->
-            <div class="navbar bg-base-100 fixed top-0">
+            <div class="navbar bg-base-100 p-4">
                 <div class="navbar-start">
                     @if (auth()->user())
                         <div data-aos="slide-right" class="flex-none">
@@ -41,9 +41,9 @@
                         <p>Universitas Muhammadiyah Cirebon</p>
                     @endif
                 </div>
-                <div data-aos="slide-left" class="navbar-end">
+                <div class="navbar-end">
                     @if (auth()->user())
-                        <form data-aos="zoom-in" action="/logout" method="POST">
+                        <form data-aos="zoom-out" action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Logout</button>
                         </form>
@@ -53,11 +53,11 @@
                             <button type="submit" class="btn btn-outline btn-error">Hapus Sesi</button>
                         </form>
                     @else
-                        <a href="/loginpage" class="btn btn-outline btn-info">Login</a>
+                        <a data-aos="zoom-in" href="/loginpage" class="btn btn-outline btn-info">Login</a>
                     @endif
                 </div>
             </div>
-            <div class="ml-3 mr-3 mb-[53px] mt-[69px]">
+            <div class="ml-3 mr-3">
                 @yield('content')
             </div>
 
@@ -99,13 +99,6 @@
                     </div>
                 </div>
             @endif
-
-            <footer class="footer footer-center bg-base-300 text-base-content fixed bottom-0 p-4">
-                <div>
-                    <p>Copyright © 2022 - Sistem Pendukung Keputusan Pemilihan UKM</p>
-                </div>
-            </footer>
-
         </div>
         <div class="drawer-side">
             <label for="my-drawer" class="drawer-overlay"></label>
@@ -126,7 +119,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 1200, // values from 0 to 3000, with step 50ms
+            duration: 1000, // values from 0 to 3000, with step 50ms
             easing: 'ease', // default easing for AOS animations
             anchorPlacement: 'center-center', // defines which position of the element regarding to window should trigger the animation
         });
