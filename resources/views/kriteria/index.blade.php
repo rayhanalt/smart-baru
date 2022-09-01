@@ -1,8 +1,8 @@
 @extends('home')
 @section('content')
-    <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
+    {{-- <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
         <a href="/kriteria/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
-    </div>
+    </div> --}}
     <div class="top-32 right-10 left-10 w-auto">
         <div class="h-[470px] overflow-auto">
             <table class="table w-full">
@@ -27,14 +27,14 @@
                                     class="btn btn-outline btn-success btn-sm mr-1">
                                     ✎
                                 </a>
-                                <form action="/kriteria/{{ $item->kode_kriteria }}" method="POST">
+                                {{-- <form action="/kriteria/{{ $item->kode_kriteria }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-outline btn-error btn-sm"
                                         onclick="return confirm('yakin hapus data {{ $item->nama_kriteria }} ?')">
                                         🗑
                                     </button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\kategori;
 use App\Models\kriteria;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -42,6 +43,18 @@ class DatabaseSeeder extends Seeder
             'kode_kriteria' => 'KD-003',
             'nama_kriteria' => 'Pengalaman',
             'bobot' => '0.11',
+        ]);
+        kategori::create([
+            'nama_kategori' => 'sains'
+        ]);
+        kategori::create([
+            'nama_kategori' => 'seni'
+        ]);
+        kategori::create([
+            'nama_kategori' => 'olahraga'
+        ]);
+        kategori::create([
+            'nama_kategori' => 'akademik'
         ]);
     }
 }

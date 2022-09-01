@@ -54,7 +54,7 @@ Route::controller(loginController::class)->group(function () {
 });
 
 // kriteria
-Route::resource('/kriteria', KriteriaController::class)->except('show')->middleware('auth');
+Route::resource('/kriteria', KriteriaController::class)->except('show', 'create', 'delete')->middleware('auth');
 
 // kategori
 Route::resource('/kategori', KategoriController::class)->except('show')->middleware('auth');

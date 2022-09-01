@@ -41,19 +41,19 @@
                         <p>Universitas Muhammadiyah Cirebon</p>
                     @endif
                 </div>
-                <div class="navbar-end">
+                <div class="navbar-end" data-aos="slide-down">
                     @if (auth()->user())
-                        <form data-aos="zoom-out" action="/logout" method="POST">
+                        <form action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Logout</button>
                         </form>
                     @elseif (session()->has('nim'))
-                        <form data-aos="zoom-in" action="/hapus" method="POST">
+                        <form action="/hapus" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-outline btn-error">Hapus Sesi</button>
                         </form>
                     @else
-                        <a data-aos="zoom-in" href="/loginpage" class="btn btn-outline btn-info">Login</a>
+                        <a href="/loginpage" class="btn btn-outline btn-info">Login</a>
                     @endif
                 </div>
             </div>
@@ -74,7 +74,7 @@
                             <script>
                                 setTimeout(function() {
                                     window.location.replace('{{ url()->current() }}');
-                                }, 1500);
+                                }, 1000);
                             </script>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <script>
                                 setTimeout(function() {
                                     window.location.replace('{{ url()->current() }}');
-                                }, 1500);
+                                }, 1000);
                             </script>
                         </div>
                     </div>

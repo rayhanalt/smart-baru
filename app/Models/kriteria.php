@@ -16,16 +16,7 @@ class kriteria extends Model
     {
         return 'kode_kriteria';
     }
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(
-            function ($model) {
 
-                $model->kode_kriteria = 'KKR-' . rand(100000, 999999);
-            }
-        );
-    }
     public function kategori_benefit()
     {
         return $this->hasMany(kategori_benefit::class, 'kode_kriteria', 'kode_kriteria');
