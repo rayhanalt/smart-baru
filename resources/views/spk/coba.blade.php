@@ -2,6 +2,12 @@
 @section('content')
     <h3 class="text-lg font-bold">Pilih Parameter</h3>
     <hr>
+    @foreach ($max as $itemax)
+        {{ $itemax->nilai_max }}
+    @endforeach
+    @foreach ($min as $itemin)
+        {{ $itemin->nilai_min }}
+    @endforeach
     <table class="table w-full">
         {{-- head --}}
         <thead>
@@ -23,7 +29,7 @@
                     <td>{{ $item->kriteria->nama_kriteria }}</td>
                     <td>{{ $item->mahasiswa->nama }}</td>
                     <td>{{ $item->nilai_parameter }}</td>
-
+                    <td>{{ $item->nilai_parameter }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -46,9 +46,6 @@ class SpkController extends Controller
             } else if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria) {
 
 
-                $katben = kategori_benefit::where('nim', '=', session('nim'))
-                    ->orderBy('kode_kriteria')
-                    ->get('nilai_parameter');
 
                 $max = kategori_benefit::select(DB::raw('max(nilai_parameter) as nilai_max'))
                     ->where('nim', session('nim'))
@@ -60,7 +57,7 @@ class SpkController extends Controller
                     ->groupBy('kode_kriteria')
                     ->get();
 
-                dd(json_encode([$katben]));
+
                 // foreach ($kategori_benefit as $hitung) {
                 //     $hitung->nilai_parameter - $min /  $max - $min;
 
@@ -70,7 +67,8 @@ class SpkController extends Controller
                 // Hitung
                 return view("spk/coba", [
                     'katben' => kategori_benefit::with('mahasiswa', 'kriteria', 'kategori')->where('nim', '=', session('nim'))->orderBy('kode_kriteria')->get(),
-                    // 'max' => kategori_benefit::max('nilai_parameter')->where('kode_kriteria')->get()
+                    'max' => $max,
+                    'min' => $min
                 ]);
             }
         }
