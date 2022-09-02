@@ -2,12 +2,14 @@
 @section('content')
     <h3 class="text-lg font-bold">Pilih Parameter</h3>
     <hr>
-    @foreach ($max as $itemax)
-        {{ $itemax->nilai_max }}
+    {{ $max }}
+    {{ $min }}
+    @foreach ($parameterMinat as $para)
+        {{ ($para->nilai_parameter - $min) / ($max - $min) }}
     @endforeach
-    @foreach ($min as $itemin)
-        {{ $itemin->nilai_min }}
-    @endforeach
+
+
+
     <table class="table w-full">
         {{-- head --}}
         <thead>

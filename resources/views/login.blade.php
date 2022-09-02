@@ -27,9 +27,7 @@
                 style="background-image: url(img/umc.jpg)">
                 <div class="absolute inset-0 z-0 bg-black opacity-60"></div>
             </div>
-            <div data-aos="slide-left" data-aos-easing="ease" class="fixed right-3 top-2">
-                <a href="/home" class="btn btn-xs btn-outline btn-error">Back</a>
-            </div>
+
             <div class="z-20 w-full py-6 font-mono">
                 @if (session()->has('failed'))
                     <div data-aos="zoom-in" class="alert alert-error shadow-lg transition-all duration-300">
