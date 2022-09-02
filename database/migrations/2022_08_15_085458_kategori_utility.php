@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_utility_kategori')->unique();
             $table->string('kode_benefit_kategori');
-            $table->integer('nilai_utility');
+            $table->decimal('nilai_utility');
             $table->timestamps();
         });
     }

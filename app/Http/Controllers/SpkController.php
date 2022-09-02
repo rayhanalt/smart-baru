@@ -6,6 +6,7 @@ use App\Models\kategori;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
 use App\Models\kategori_benefit;
+use App\Models\kategori_utility;
 use Illuminate\Support\Facades\DB;
 
 class SpkController extends Controller
@@ -46,65 +47,31 @@ class SpkController extends Controller
             } else if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria) {
 
 
-                // max dari nilai parameter masing-masing kriteria
-                $maxMinat = kategori_benefit::select(DB::raw('max(nilai_parameter) as nilai_max'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-001')
-                    ->pluck('nilai_max')
-                    ->first();
-                $maxBakat = kategori_benefit::select(DB::raw('max(nilai_parameter) as nilai_max'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-002')
-                    ->pluck('nilai_max')
-                    ->first();
-                $maxPengalaman = kategori_benefit::select(DB::raw('max(nilai_parameter) as nilai_max'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-003')
-                    ->pluck('nilai_max')
-                    ->first();
 
-
-                // min dari nilai parameter masing-masing kriteria
-                $minMinat = kategori_benefit::select(DB::raw('min(nilai_parameter) as nilai_min'))
+                $hasils = kategori_benefit::select(DB::raw('min(nilai_parameter) as nilai_min, max(nilai_parameter) as nilai_max, kode_kriteria'))
                     ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-001')
-                    ->pluck('nilai_min')
-                    ->first();
-                $minBakat = kategori_benefit::select(DB::raw('min(nilai_parameter) as nilai_min'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-002')
-                    ->first();
-                $minPengalaman = kategori_benefit::select(DB::raw('min(nilai_parameter) as nilai_min'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-003')
-                    ->first();
-
-
-                // min dari nilai parameter masing-masing kriteria
-                $parameterMinat = kategori_benefit::select(DB::raw('nilai_parameter'))
-                    ->where('nim', session('nim'))
-                    ->where('kode_kriteria', 'KD-001')
+                    ->groupBy('kode_kriteria')
                     ->get();
-                // foreach ($parameterMinat as $hitung) {
-                //     $hitung - $minMinat /  $maxMinat - $minMinat;
-                // }
-                // dd(json_encode($hitung));
 
-                foreach ($parameterMinat as $para) {
-                    if ($maxMinat - $minMinat == 0) {
-                        dd(0);
-                    } else {
-                        dd(($para->nilai_parameter - $minMinat) / ($maxMinat - $minMinat));
+                foreach ($hasils as $hasil) {
+                    $nilai_parameters = kategori_benefit::select(DB::raw('nilai_parameter, kode_benefit_kategori'))
+                        ->where('nim', session('nim'))
+                        ->where('kode_kriteria', $hasil->kode_kriteria)
+                        ->get();
+
+                    foreach ($nilai_parameters as $nilai_parameter) {
+                        $nilai_utility = 0;
+
+                        if ($hasil->nilai_max - $hasil->nilai_min != 0) {
+                            $nilai_utility = ($nilai_parameter->nilai_parameter - $hasil->nilai_min) / ($hasil->nilai_max - $hasil->nilai_min);
+                        }
+
+                        kategori_utility::updateOrCreate([
+                            'nilai_utility' => $nilai_utility,
+                            'kode_benefit_kategori' => $nilai_parameter->kode_benefit_kategori
+                        ]);
                     }
                 }
-
-                // Hitung
-                return view("spk/coba", [
-                    'katben' => kategori_benefit::with('mahasiswa', 'kriteria', 'kategori')->where('nim', '=', session('nim'))->orderBy('kode_kriteria')->get(),
-                    'max' => $maxMinat,
-                    'parameterMinat' => $parameterMinat,
-                    'min' => $minMinat
-                ]);
             }
         }
 

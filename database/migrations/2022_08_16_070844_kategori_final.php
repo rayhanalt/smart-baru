@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_final_kategori')->unique();
             $table->string('kode_utility_kategori');
-            $table->integer('nilai_akhir');
+            $table->decimal('nilai_akhir');
             $table->timestamps();
         });
     }
