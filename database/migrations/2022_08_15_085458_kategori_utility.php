@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('kategori_utility', function (Blueprint $table) {
             $table->id();
             $table->string('kode_utility_kategori')->unique();
+            $table->string('kode_kategori');
             $table->string('kode_benefit_kategori');
+            $table->string('kode_kriteria');
+            $table->string('nim');
             $table->decimal('nilai_utility');
             $table->timestamps();
         });

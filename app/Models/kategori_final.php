@@ -25,8 +25,23 @@ class kategori_final extends Model
             }
         );
     }
+    // HasMany
+
+    // belongsTo
     public function kategori_utility()
     {
-        return $this->hasMany(kategori_utility::class, 'kode_utility_kategori', 'kode_utility_kategori');
+        return $this->belongsTo(kategori_utility::class, 'kode_utility_kategori', 'kode_utility_kategori');
+    }
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'kode_kategori', 'kode_kategori');
+    }
+    public function kriteria()
+    {
+        return $this->belongsTo(kriteria::class, 'kode_kriteria', 'kode_kriteria');
+    }
+    public function mahasiswa()
+    {
+        return $this->belongsTo(mahasiswa::class, 'nim', 'nim');
     }
 }

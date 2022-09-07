@@ -6,6 +6,7 @@ use App\Models\kategori;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
 use App\Models\kategori_benefit;
+use App\Models\kategori_final;
 use App\Models\kategori_utility;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +55,7 @@ class SpkController extends Controller
                     ->get();
 
                 foreach ($hasils as $hasil) {
-                    $nilai_parameters = kategori_benefit::select(DB::raw('nilai_parameter, kode_benefit_kategori'))
+                    $nilai_parameters = kategori_benefit::select(DB::raw('nilai_parameter, kode_benefit_kategori, kode_kriteria, kode_kategori'))
                         ->where('nim', session('nim'))
                         ->where('kode_kriteria', $hasil->kode_kriteria)
                         ->get();
@@ -67,11 +68,42 @@ class SpkController extends Controller
                         }
 
                         kategori_utility::updateOrCreate([
-                            'nilai_utility' => $nilai_utility,
-                            'kode_benefit_kategori' => $nilai_parameter->kode_benefit_kategori
+                            'kode_kriteria' => $nilai_parameter->kode_kriteria,
+                            'kode_kategori' => $nilai_parameter->kode_kategori,
+                            'nim' => session('nim'),
+                            'kode_benefit_kategori' => $nilai_parameter->kode_benefit_kategori,
+                        ], [
+                            'nilai_utility' => $nilai_utility
                         ]);
                     }
                 }
+
+                // $utility = kategori_utility::select(DB::raw('nilai_utility, kode_kriteria'))
+                //     ->with('kriteria')
+                //     ->where('nim', session('nim'))
+                //     ->groupBy('kode_kriteria')
+                //     ->get();
+
+                // foreach ($utility as $hasil) {
+                //     $nilai_utilitys = kategori_utility::select(DB::raw('nilai_utility, kode_utility_kategori, kode_kriteria, kode_kategori'))
+                //         ->where('nim', session('nim'))
+                //         ->where('kode_kriteria', $hasil->kode_kriteria)
+                //         ->get();
+
+                //     foreach ($nilai_utilitys as $nilai_util) {
+
+                //         $nilai_final = $nilai_util->nilai_utility * $hasil->kriteria->bobot;
+
+                //         kategori_final::updateOrCreate([
+                //             'kode_kriteria' => $nilai_util->kode_kriteria,
+                //             'kode_kategori' => $nilai_util->kode_kategori,
+                //             'nim' => session('nim'),
+                //             'kode_utility_kategori' => $nilai_util->kode_utility_kategori,
+                //         ], [
+                //             'nilai_final' => $nilai_final
+                //         ]);
+                //     }
+                // }
             }
         }
 

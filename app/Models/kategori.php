@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\kategori_benefit;
+
 use App\Models\alternatif;
+use App\Models\kategori_benefit;
+use App\Models\kategori_final;
+use App\Models\kategori_utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,5 +37,13 @@ class kategori extends Model
     public function kategori_benefit()
     {
         return $this->hasMany(kategori_benefit::class, 'kode_kategori', 'kode_kategori');
+    }
+    public function kategori_utility()
+    {
+        return $this->hasMany(kategori_utility::class, 'kode_kategori', 'kode_kategori');
+    }
+    public function kategori_final()
+    {
+        return $this->hasMany(kategori_final::class, 'kode_kategori', 'kode_kategori');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\kategori;
 use App\Models\kriteria;
 use App\Models\mahasiswa;
+use App\Models\kategori_utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,6 +28,13 @@ class kategori_benefit extends Model
             }
         );
     }
+    // HasMany
+    public function kategori_utility()
+    {
+        return $this->hasMany(kategori_utility::class, 'kode_benefit_kategori', 'kode_benefit_kategori');
+    }
+
+    // belongsTo
     public function kategori()
     {
         return $this->belongsTo(kategori::class, 'kode_kategori', 'kode_kategori');
