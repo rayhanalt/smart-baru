@@ -110,4 +110,37 @@ class SpkController extends Controller
 
         // return redirect("/spk/spk")->with('success', 'New Data has been added!')->withInput();
     }
+    public function hasil_kategori()
+    {
+        // $kriteria = kategori_final::select(DB::raw('kode_kriteria, nilai_akhir'))
+        //     ->with('kriteria')
+        //     ->where('nim', session('nim'))
+        //     ->groupBy('kode_kriteria')
+        //     ->get();
+        // $kategori = kategori_final::select(DB::raw('kode_kategori,nilai_akhir, kode_kriteria'))
+        //     ->with('kategori', 'kriteria')
+        //     ->where('nim', session('nim'))
+        //     // ->groupBy('kode_kategori')
+        //     ->get();
+
+        // foreach ($hasil_akhir as $row) {
+        //     $nilai = kategori_final::select(DB::raw('nilai_akhir, kode_kriteria, kode_kategori'))
+        //         ->with('kriteria', 'kategori', 'mahasiswa')
+        //         ->where('nim', session('nim'))
+        //         ->where('kode_kriteria', $row->kode_kriteria)
+        //         ->get();
+        // }
+        $kategori = kategori_final::select(DB::raw('SUM(nilai_akhir) as total,kode_kategori'))
+            ->with('kategori')
+            ->where('nim', session('nim'))
+            ->groupBy('kode_kategori')
+            ->orderBy('total', 'DESC')
+            ->get();
+
+
+        return view('spk.hasil', [
+            'total' => $kategori,
+            // 'row' => $row
+        ]);
+    }
 }
