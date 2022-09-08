@@ -26,6 +26,7 @@ class SpkController extends Controller
     }
     public function store(Request $request, Kriteria $kriteria = null)
     {
+
         foreach ($request->nilai_parameter as $kode_kategori => $nilai_parameter) {
             kategori_benefit::updateOrCreate([
                 'kode_kategori' => $kode_kategori,
@@ -78,32 +79,32 @@ class SpkController extends Controller
                     }
                 }
 
-                // $utility = kategori_utility::select(DB::raw('nilai_utility, kode_kriteria'))
-                //     ->with('kriteria')
-                //     ->where('nim', session('nim'))
-                //     ->groupBy('kode_kriteria')
-                //     ->get();
+                $utility = kategori_utility::select(DB::raw('nilai_utility, kode_kriteria'))
+                    ->with('kriteria')
+                    ->where('nim', session('nim'))
+                    ->groupBy('kode_kriteria')
+                    ->get();
 
-                // foreach ($utility as $hasil) {
-                //     $nilai_utilitys = kategori_utility::select(DB::raw('nilai_utility, kode_utility_kategori, kode_kriteria, kode_kategori'))
-                //         ->where('nim', session('nim'))
-                //         ->where('kode_kriteria', $hasil->kode_kriteria)
-                //         ->get();
+                foreach ($utility as $final) {
+                    $nilai_utilitys = kategori_utility::select(DB::raw('nilai_utility, kode_utility_kategori, kode_kriteria, kode_kategori'))
+                        ->where('nim', session('nim'))
+                        ->where('kode_kriteria', $final->kode_kriteria)
+                        ->get();
 
-                //     foreach ($nilai_utilitys as $nilai_util) {
+                    foreach ($nilai_utilitys as $nilai_util) {
 
-                //         $nilai_final = $nilai_util->nilai_utility * $hasil->kriteria->bobot;
+                        $nilai_final = $nilai_util->nilai_utility * $final->kriteria->bobot;
 
-                //         kategori_final::updateOrCreate([
-                //             'kode_kriteria' => $nilai_util->kode_kriteria,
-                //             'kode_kategori' => $nilai_util->kode_kategori,
-                //             'nim' => session('nim'),
-                //             'kode_utility_kategori' => $nilai_util->kode_utility_kategori,
-                //         ], [
-                //             'nilai_final' => $nilai_final
-                //         ]);
-                //     }
-                // }
+                        kategori_final::updateOrCreate([
+                            'kode_kriteria' => $nilai_util->kode_kriteria,
+                            'kode_kategori' => $nilai_util->kode_kategori,
+                            'nim' => session('nim'),
+                            'kode_utility_kategori' => $nilai_util->kode_utility_kategori,
+                        ], [
+                            'nilai_akhir' => $nilai_final
+                        ]);
+                    }
+                }
             }
         }
 
