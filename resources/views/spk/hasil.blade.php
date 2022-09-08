@@ -16,7 +16,7 @@
                     <tbody>
                         <!-- row 1 -->
                         @foreach ($total as $item)
-                            <tr @if ($loop->iteration == 1) class='text-red-300 font-bold animate-pulse' @endif>
+                            <tr @if ($loop->iteration == 1) class='text-red-500 font-bold' @endif>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kategori->nama_kategori }}</td>
                                 <td>{{ $item->total }}</td>

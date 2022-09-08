@@ -45,7 +45,7 @@ class SpkController extends Controller
             if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria && $index < count($semua_kriteria) - 1) {
                 // Redirect ke kriteria selanjutnya
                 $kode_kriteria_terakhir = $semua_kriteria[$index + 1]->kode_kriteria;
-                return redirect("/spk/spk/{$kode_kriteria_terakhir}")->with('success', 'New Data has been added!')->withInput();
+                return redirect("/spk/spk/{$kode_kriteria_terakhir}")->with('success', 'berhasil')->withInput();
             } else if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria) {
 
 
@@ -108,7 +108,7 @@ class SpkController extends Controller
             }
         }
 
-        // return redirect("/spk/spk")->with('success', 'New Data has been added!')->withInput();
+        return redirect("/spk/hasil")->with('success', 'Berikut Hasil Rekomendasi Kategori')->withInput();
     }
     public function hasil_kategori()
     {
