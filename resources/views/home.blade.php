@@ -29,9 +29,13 @@
                         </div>
                     @endif
                     <div @if (auth()->user()) class="ml-5" @endif data-aos="slide-down">
-                        <a class="{{ Request::is('dashboard*') ? 'animate-pulse' : '' }}" href="/dashboard">
-                            <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
-                        </a>
+                        @if (auth()->user())
+                            <a class="{{ Request::is('dashboard*') ? 'animate-pulse' : '' }}" href="/dashboard">
+                        @endif
+                        <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
+                        @if (auth()->user())
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="navbar-center">

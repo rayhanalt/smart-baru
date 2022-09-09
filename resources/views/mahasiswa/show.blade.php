@@ -4,11 +4,9 @@
         {{ $maha->nama }} Detail
     </h3>
     <hr>
-    <div class="flex place-content-center">
-
+    <div class="mb-2 flex place-content-center">
         <div class="card bg-base-100 w-auto shadow-xl lg:w-1/2">
             <div class="card-body">
-
                 <table class="table w-full">
                     {{-- head --}}
                     <thead>

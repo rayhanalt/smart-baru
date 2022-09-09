@@ -30,7 +30,7 @@
 
             <div class="z-20 w-full py-6 font-mono">
                 @if (session()->has('failed'))
-                    <div data-aos="zoom-in" class="alert alert-error shadow-lg transition-all duration-300">
+                    <div data-aos="slide-down" class="alert alert-error shadow-lg transition-all duration-300">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 stroke-current"
                                 fill="none" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
                     </div>
                 @endif
                 @if (session()->has('blocked'))
-                    <div data-aos="zoom-in" class="alert alert-error shadow-lg transition-all duration-300">
+                    <div data-aos="slide-down" class="alert alert-error shadow-lg transition-all duration-300">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 stroke-current"
                                 fill="none" viewBox="0 0 24 24">
@@ -58,12 +58,13 @@
                         </div>
                     </div>
                 @endif
-                <h1 data-aos="zoom-in" data-aos-duration="1300" class="my-6">
+                <h1 data-aos="slide-down" data-aos-duration="1100" class="my-6">
                     <img src="img/login.png" alt="Login" class="mx-auto opacity-60 transition-all hover:scale-105">
                 </h1>
-                <form action="/login" autocomplete="off" method="post" class="mx-auto w-full px-4 sm:w-2/3 lg:px-0">
+                <a href="/" class="btn btn-warning btn-outline btn-sm fixed top-2 right-2 rounded-full">back</a>
+                <form action="/login" autocomplete="off" method="post" class="mx-auto w-2/3 px-4 lg:px-0">
                     @csrf
-                    <div data-aos="zoom-in" data-aos-duration="1400" class="pb-2 pt-4">
+                    <div data-aos="slide-down" data-aos-duration="1200" class="pb-2 pt-4">
                         <input type="text" name="username" id="username" placeholder="Masukkan Username..."
                             value="{{ old('username') }}"
                             class="block w-full rounded-2xl bg-zinc-900 p-4 text-lg transition-all hover:scale-105 focus:scale-105"
@@ -74,13 +75,13 @@
                             </span>
                         @enderror
                     </div>
-                    <div data-aos="zoom-in" data-aos-duration="1500" class="pb-2 pt-4">
+                    <div data-aos="slide-down" data-aos-duration="1300" class="pb-2 pt-4">
                         <input
                             class="block w-full rounded-2xl bg-zinc-900 p-4 text-lg transition-all hover:scale-105 focus:scale-105"
                             type="password" name="password" id="password" required placeholder="Password">
                     </div>
 
-                    <div data-aos="zoom-in" data-aos-duration="1600" class="px-4 pb-2 pt-4">
+                    <div data-aos="slide-down" data-aos-duration="1400" class="px-4 pb-2 pt-4">
                         <button
                             class="block w-full rounded-full bg-rose-500 p-4 text-lg uppercase transition-all hover:scale-105 hover:bg-rose-600 focus:scale-105 active:bg-rose-700">Login</button>
                     </div>
@@ -92,7 +93,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 1200, // values from 0 to 3000, with step 50ms
+            duration: 1000, // values from 0 to 3000, with step 50ms
             easing: 'ease-in-out-back', // default easing for AOS animations
             anchorPlacement: 'center-center', // defines which position of the element regarding to window should trigger the animation
         });

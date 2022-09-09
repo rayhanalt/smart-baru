@@ -28,15 +28,15 @@ Route::get('/loginpage', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
+// dashboard admin
 Route::get('/dashboard', [dashboardController::class, 'dashboard'])->middleware('auth');
+
 // home
 Route::get('/', function () {
-
     return view('/spk/alur');
 })->middleware('guest');
 
 Route::get('/home', function () {
-
     return view('/spk/alur');
 })->middleware('guest');
 
@@ -59,7 +59,7 @@ Route::resource('/kategori', KategoriController::class)->except('show')->middlew
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
 
 // mahasiswa
-Route::resource('/mahasiswa', MahasiswaController::class)->middleware('auth');
+Route::resource('/mahasiswa', MahasiswaController::class)->except('create')->middleware('auth');
 
 //spk
 Route::controller(SpkController::class)->group(function () {
