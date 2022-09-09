@@ -29,7 +29,9 @@
                         </div>
                     @endif
                     <div @if (auth()->user()) class="ml-5" @endif data-aos="slide-down">
-                        <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
+                        <a class="{{ Request::is('dashboard*') ? 'animate-pulse' : '' }}" href="/dashboard">
+                            <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
+                        </a>
                     </div>
                 </div>
                 <div class="navbar-center">
@@ -57,7 +59,8 @@
                     @endif
                 </div>
             </div>
-            <div class="ml-3 mr-3">
+
+            <div class="ml-3 mr-3 mb-3 w-auto">
                 @yield('content')
             </div>
 
@@ -100,6 +103,7 @@
                 </div>
             @endif
         </div>
+
         <div class="drawer-side">
             <label for="my-drawer" class="drawer-overlay"></label>
             <ul class="menu bg-base-100 text-base-content w-80 overflow-y-auto p-4">

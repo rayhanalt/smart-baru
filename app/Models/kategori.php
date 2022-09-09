@@ -15,7 +15,10 @@ class kategori extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'kategori';
-
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
     public function getRouteKeyName()
     {
         return 'kode_kategori';

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
+use App\Models\kategori_final;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Unique;
 
 class MahasiswaController extends Controller
@@ -15,7 +18,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.index',[
+        return view('mahasiswa.index', [
             'mahasiswa' => mahasiswa::all()
         ]);
     }
@@ -27,7 +30,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create',[
+        return view('mahasiswa.create', [
             'mahasiswa' => mahasiswa::get()
         ]);
     }
@@ -40,18 +43,16 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-      
-        
-            $validasi = $request->validate([
-                'nim' => 'required|size:9|unique:mahasiswa',
-                'nama' => 'required',
-            ]);
-            mahasiswa::create($validasi);
-       
-      
-           return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
-    
-        
+
+
+        $validasi = $request->validate([
+            'nim' => 'required|size:9|unique:mahasiswa',
+            'nama' => 'required',
+        ]);
+        mahasiswa::create($validasi);
+
+
+        return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
     }
 
     /**
@@ -62,7 +63,18 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        //
+        $total =  kategori_final::select(DB::raw('SUM(nilai_akhir) as total,kode_kategori,nim'))
+            ->with('kategori', 'mahasiswa')
+            ->where('nim', $mahasiswa->nim)
+            ->groupBy('kode_kategori')
+            ->orderBy('total', 'DESC')
+            ->get();
+        $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
+
+        return view('mahasiswa.show', [
+            'total' => $total,
+            'maha' => $maha
+        ]);
     }
 
     /**
@@ -73,7 +85,7 @@ class MahasiswaController extends Controller
      */
     public function edit(mahasiswa $mahasiswa)
     {
-        return view('mahasiswa.edit',[
+        return view('mahasiswa.edit', [
             'item' => $mahasiswa,
             'mahasiswa' => mahasiswa::get()
         ]);
@@ -93,14 +105,13 @@ class MahasiswaController extends Controller
             'nim' => 'required|size:9',
             'nama' => 'required'
         ];
-        if($request->nim != $mahasiswa->nim)
-        {
+        if ($request->nim != $mahasiswa->nim) {
             $rules['nim'] = 'required|size:9|unique:mahasiswa';
         }
         $validasi = $request->validate($rules);
-       
+
         $mahasiswa->update($validasi);
-        
+
         return redirect('/mahasiswa')->with('success', 'Data has been updated!')->withInput();
     }
 
@@ -113,7 +124,7 @@ class MahasiswaController extends Controller
     public function destroy(mahasiswa $mahasiswa)
     {
         $mahasiswa->delete();
-        
+
         return redirect('/mahasiswa')->with('success', 'Data has been deleted!')->withInput();
     }
 }

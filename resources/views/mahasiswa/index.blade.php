@@ -35,6 +35,9 @@
                                         🗑
                                     </button>
                                 </form>
+                                <a href="/mahasiswa/{{ $item->nim }}" class="btn btn-outline btn-success btn-sm ml-1">
+                                    👀
+                                </a>
                             </td>
                         </tr>
                     @endforeach

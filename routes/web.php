@@ -9,6 +9,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\dashboardController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,23 +28,17 @@ Route::get('/loginpage', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
+Route::get('/dashboard', [dashboardController::class, 'dashboard'])->middleware('auth');
 // home
 Route::get('/', function () {
-    if (auth()->user()) {
-        return view('/home');
-    } elseif (!auth()->user()) {
-        return view('/spk/alur');
-    }
-});
+
+    return view('/spk/alur');
+})->middleware('guest');
 
 Route::get('/home', function () {
-    if (auth()->user()) {
-        return view('/home');
-    } elseif (!auth()->user()) {
-        return view('/spk/alur');
-    }
-});
 
+    return view('/spk/alur');
+})->middleware('guest');
 
 // login
 Route::controller(loginController::class)->group(function () {
@@ -63,7 +59,7 @@ Route::resource('/kategori', KategoriController::class)->except('show')->middlew
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
 
 // mahasiswa
-Route::resource('/mahasiswa', MahasiswaController::class)->except('show')->middleware('auth');
+Route::resource('/mahasiswa', MahasiswaController::class)->middleware('auth');
 
 //spk
 Route::controller(SpkController::class)->group(function () {

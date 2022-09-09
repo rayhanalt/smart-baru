@@ -11,6 +11,10 @@ class alternatif extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'alternatif';
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
     public function getRouteKeyName()
     {
         return 'kode_alternatif';
@@ -18,14 +22,14 @@ class alternatif extends Model
     public static function boot()
     {
         parent::boot();
-        static::creating(function($model)
-        {
-        $model->kode_alternatif = 'KA-'.rand(100000,999999);
-        }
-    );
+        static::creating(
+            function ($model) {
+                $model->kode_alternatif = 'KA-' . rand(100000, 999999);
+            }
+        );
     }
     public function kategori()
     {
-        return $this->belongsTo(kategori::class,'kode_kategori' , 'kode_kategori');
+        return $this->belongsTo(kategori::class, 'kode_kategori', 'kode_kategori');
     }
 }

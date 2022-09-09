@@ -15,8 +15,8 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        return view('alternatif.index',[
-            'alternatif' => alternatif::with('kategori')->get(),      
+        return view('alternatif.index', [
+            'alternatif' => alternatif::with('kategori')->orderBy('kode_kategori')->get(),
         ]);
     }
 
@@ -27,7 +27,7 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        return view('alternatif.create',[
+        return view('alternatif.create', [
             'alternatif' => alternatif::get(),
             'kategori' => kategori::get()
         ]);
@@ -46,7 +46,7 @@ class AlternatifController extends Controller
             'kode_kategori' => 'required',
         ]);
         alternatif::create($validasi);
-       
+
         return redirect('/alternatif')->with('success', 'New Data has been added!')->withInput();
     }
 
@@ -69,11 +69,11 @@ class AlternatifController extends Controller
      */
     public function edit(alternatif $alternatif)
     {
-        return view('alternatif.edit',[
+        return view('alternatif.edit', [
             'item' => $alternatif,
             'alternatif' => alternatif::get(),
             'kategori' => kategori::get()
-           
+
         ]);
     }
 
@@ -91,7 +91,7 @@ class AlternatifController extends Controller
             'kode_kategori' => 'required',
         ]);
         $alternatif->update($validasi);
-       
+
         return redirect('/alternatif')->with('success', 'Data has been updated!')->withInput();
     }
 

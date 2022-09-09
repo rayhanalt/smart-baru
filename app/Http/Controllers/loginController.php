@@ -13,16 +13,15 @@ class loginController extends Controller
     public function auth(Request $request)
     {
         $validasiAuth = $request->validate([
-                'username' => 'required',
-                'password' => 'required'
-            ]);
-         
-            if(Auth::attempt($validasiAuth))
-            {
-                $request->session()->regenerate();
-                return redirect()->intended('/');
-            }
-            return back()->with('failed', 'Login Failed!')->withInput();
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($validasiAuth)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+        return back()->with('failed', 'Login Failed!')->withInput();
     }
     public function logout(Request $request)
     {
