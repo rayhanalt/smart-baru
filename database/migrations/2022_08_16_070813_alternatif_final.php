@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('kode_final_alternatif')->unique();
             $table->string('kode_utility_alternatif');
-            $table->integer('nilai_akhir');
+            $table->string('kode_alternatif');
+            $table->string('kode_kriteria');
+            $table->string('nim');
+            $table->decimal('nilai_akhir');
             $table->timestamps();
         });
     }

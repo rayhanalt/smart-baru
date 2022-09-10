@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Models\kategori_benefit;
 use App\Models\kategori_final;
 use App\Models\kategori_utility;
+use App\Models\alternatif_final;
+use App\Models\alternatif_utility;
+use App\Models\alternatif_benefit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -33,5 +36,17 @@ class mahasiswa extends Model
     public function kategori_utility()
     {
         return $this->hasMany(kategori_utility::class, 'nim', 'nim');
+    }
+    public function alternatif_benefit()
+    {
+        return $this->hasMany(alternatif_benefit::class, 'nim', 'nim');
+    }
+    public function alternatif_final()
+    {
+        return $this->hasMany(alternatif_final::class, 'nim', 'nim');
+    }
+    public function alternatif_utility()
+    {
+        return $this->hasMany(alternatif_utility::class, 'nim', 'nim');
     }
 }

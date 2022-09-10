@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kode_alternatif');
             $table->string('kode_kriteria');
             $table->string('nim');
-            $table->integer('nilai_parameter');
+            $table->decimal('nilai_parameter');
             $table->timestamps();
         });
     }

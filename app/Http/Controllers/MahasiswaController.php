@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kategori;
 use App\Models\mahasiswa;
 use App\Models\kategori_final;
 use App\Models\kategori_utility;
