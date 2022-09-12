@@ -10,10 +10,6 @@ class dashboardController extends Controller
 {
     public function dashboard()
     {
-        // $kategori = kategori::count();
-        // $alternatif = alternatif::count();
-        // $mahasiswa = mahasiswa::count();
-
         return view('dashboard', [
             'kategori' => kategori::count(),
             'alternatif' => alternatif::count(),

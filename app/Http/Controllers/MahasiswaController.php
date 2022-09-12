@@ -70,12 +70,16 @@ class MahasiswaController extends Controller
             ->orderBy('total', 'DESC')
             ->get();
         $kriteria = kriteria::get();
-        $utiliti = kategori_utility::where('nim', $mahasiswa->nim)->get();
-        $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
+        $utiliti = kategori_utility::select(DB::raw('nilai_utility,kode_kategori,nim'))
+            ->with('kategori', 'mahasiswa')
+            ->where('nim', $mahasiswa->nim)
+            ->groupBy('kode_kategori')
+            ->get();
+        // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
 
         return view('mahasiswa.show', [
             'total' => $total,
-            'maha' => $maha,
+            // 'maha' => $maha,
             'util' => $utiliti,
             'kriteria' => $kriteria,
         ]);
