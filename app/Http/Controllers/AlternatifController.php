@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kategori;
 use App\Models\alternatif;
 use Illuminate\Http\Request;
+use PDF;
 
 class AlternatifController extends Controller
 {
@@ -105,5 +106,18 @@ class AlternatifController extends Controller
     {
         $alternatif->delete();
         return redirect('/alternatif')->with('success', 'Data has been deleted!');
+    }
+    public function createPDF()
+    {
+        $users = alternatif::with('kategori')->orderBy('kode_kategori')->get();
+
+        $data = [
+            'title' => 'Laporan Data UKM',
+            'date' => date('m/d/Y'),
+            'users' => $users,
+        ];
+        $pdf = PDF::loadView('alternatif.pdf', $data);
+        $set = $pdf->setPaper('a4', 'portrait');
+        return $set->stream('alternatif.pdf');
     }
 }

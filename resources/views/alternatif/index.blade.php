@@ -1,8 +1,14 @@
 @extends('home')
 @section('content')
-    <div class="right-1 mb-2" data-aos="slide-right" data-aos-duration="1600" data-aos-easing="linear">
-        <a href="/alternatif/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
+    <div class="mb-2 mr-2 ml-2 flex flex-row justify-between">
+        <div data-aos="slide-up" data-aos-duration="1000" data-aos-easing="ease-in-out-cubic">
+            <a href="/alternatif/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
+        </div>
+        <div data-aos="slide-up" data-aos-duration="1000" data-aos-easing="ease-in-out-cubic">
+            <a href="pdf-alternatif" class="btn btn-outline btn-secondary btn-sm">📇 Print</a>
+        </div>
     </div>
+
     <div class="top-32 right-10 left-10 w-auto">
         <div class="h-[470px] overflow-auto">
             <table class="table w-full">

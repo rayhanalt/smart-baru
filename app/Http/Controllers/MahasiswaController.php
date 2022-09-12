@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
+use PDF;
 use App\Models\mahasiswa;
 use App\Models\kategori_final;
 use App\Models\kategori_utility;
@@ -10,7 +10,6 @@ use App\Models\kriteria;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules\Unique;
 
 class MahasiswaController extends Controller
 {
@@ -130,5 +129,18 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         return redirect('/mahasiswa')->with('success', 'Data has been deleted!')->withInput();
+    }
+    public function createPDF()
+    {
+        $users = mahasiswa::get();
+
+        $data = [
+            'title' => 'Laporan Data Mahasiswa',
+            'date' => date('m/d/Y'),
+            'users' => $users,
+        ];
+        $pdf = PDF::loadView('mahasiswa.pdf', $data);
+        $set = $pdf->setPaper('a4', 'portrait');
+        return $set->stream('mahasiswa.pdf');
     }
 }

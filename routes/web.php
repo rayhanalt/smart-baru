@@ -57,9 +57,11 @@ Route::resource('/kategori', KategoriController::class)->except('show')->middlew
 
 // alternatif
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
+Route::get('pdf-alternatif', [AlternatifController::class, 'createPDF'])->middleware('auth');
 
 // mahasiswa
 Route::resource('/mahasiswa', MahasiswaController::class)->except('create')->middleware('auth');
+Route::get('pdf-mahasiswa', [MahasiswaController::class, 'createPDF'])->middleware('auth');
 
 //spk
 Route::controller(SpkController::class)->group(function () {
