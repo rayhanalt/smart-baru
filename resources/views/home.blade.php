@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @vite('resources/css/app.css')
+    @livewireStyles
     <title>Document</title>
 </head>
 
@@ -124,6 +125,7 @@
             anchorPlacement: 'center-center', // defines which position of the element regarding to window should trigger the animation
         });
     </script>
+    @livewireScripts
 </body>
 
 </html>

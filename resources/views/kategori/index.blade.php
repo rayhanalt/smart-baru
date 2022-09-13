@@ -18,7 +18,7 @@
                     <!-- row 1 -->
                     @foreach ($kategori as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $loop->iteration + $kategori->FirstItem() - 1 }}</td>
                             <td>{{ $item->nama_kategori }}</td>
                             <td class="flex place-content-center text-center">
                                 <a href="/kategori/{{ $item->kode_kategori }}/edit"
@@ -38,6 +38,20 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($kategori->total() > 5)
+                <div class="mt-10 flex place-content-center">
+                    <div class="btn-group grid w-fit grid-cols-2">
+
+                        <a href="{{ $kategori->previousPageUrl() }}" @if ($kategori->onFirstPage()) disabled @endif
+                            class="btn btn-outline btn-sm">Previous</a>
+
+
+                        <a href="{{ $kategori->nextPageUrl() }}"@if (!$kategori->hasMorePages()) disabled @endif
+                            class="btn btn-outline btn-sm">Next</a>
+
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

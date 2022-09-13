@@ -20,7 +20,7 @@
                     <!-- row 1 -->
                     @foreach ($mahasiswa as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $loop->iteration + $mahasiswa->FirstItem() - 1 }}</td>
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->nama }}</td>
                             <td class="flex place-content-center text-center">

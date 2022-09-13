@@ -15,7 +15,7 @@ class KategoriController extends Controller
     public function index()
     {
         return view('kategori.index', [
-            'kategori' => kategori::get()
+            'kategori' => kategori::Paginate(5)->withQueryString()
         ]);
     }
 
