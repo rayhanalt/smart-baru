@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kategori;
+use App\Models\kategori_benefit;
 use PDF;
 use App\Models\mahasiswa;
 use App\Models\kategori_final;
@@ -21,7 +23,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         return view('mahasiswa.index', [
-            'mahasiswa' => mahasiswa::all()
+            'mahasiswa' => mahasiswa::Paginate(5)->withQueryString()
         ]);
     }
 
@@ -70,10 +72,11 @@ class MahasiswaController extends Controller
             ->orderBy('total', 'DESC')
             ->get();
         $kriteria = kriteria::get();
-        $utiliti = kategori_utility::select(DB::raw('nilai_utility,kode_kategori,nim'))
-            ->with('kategori', 'mahasiswa')
+        $utiliti = kategori_utility::select(DB::raw('nilai_utility,nim,kode_kriteria,kode_kategori'))
+            ->with('kriteria', 'mahasiswa', 'kategori')
             ->where('nim', $mahasiswa->nim)
-            ->groupBy('kode_kategori')
+            ->groupBy('kode_kriteria')
+            ->orderBy('kode_kategori')
             ->get();
         // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
 
@@ -130,9 +133,13 @@ class MahasiswaController extends Controller
      */
     public function destroy(mahasiswa $mahasiswa)
     {
+        kategori_benefit::where('nim', $mahasiswa->nim)->delete();
+        kategori_utility::where('nim', $mahasiswa->nim)->delete();
+        kategori_final::where('nim', $mahasiswa->nim)->delete();
         $mahasiswa->delete();
 
-        return redirect('/mahasiswa')->with('success', 'Data has been deleted!')->withInput();
+
+        return redirect()->back()->with('success', 'Data has been deleted!')->withInput();
     }
     public function createPDF()
     {

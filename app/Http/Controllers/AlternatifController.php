@@ -17,7 +17,7 @@ class AlternatifController extends Controller
     public function index()
     {
         return view('alternatif.index', [
-            'alternatif' => alternatif::with('kategori')->orderBy('kode_kategori')->get(),
+            'alternatif' => alternatif::with('kategori')->orderBy('kode_kategori')->Paginate(5)->withQueryString(),
         ]);
     }
 
@@ -105,7 +105,8 @@ class AlternatifController extends Controller
     public function destroy(alternatif $alternatif)
     {
         $alternatif->delete();
-        return redirect('/alternatif')->with('success', 'Data has been deleted!');
+
+        return redirect()->back()->with('success', 'Data has been deleted!');
     }
     public function createPDF()
     {

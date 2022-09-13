@@ -4,6 +4,7 @@
         <div data-aos="slide-up" data-aos-duration="1000" data-aos-easing="ease-in-out-cubic">
             <a href="/alternatif/create" class="btn btn-outline btn-primary btn-sm">➕ Data</a>
         </div>
+
         <div data-aos="slide-up" data-aos-duration="1000" data-aos-easing="ease-in-out-cubic">
             <a href="pdf-alternatif" class="btn btn-outline btn-secondary btn-sm">📇 Print</a>
         </div>
@@ -25,7 +26,7 @@
                     <!-- row 1 -->
                     @foreach ($alternatif as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $loop->iteration + $alternatif->FirstItem() - 1 }}</td>
                             <td>{{ $item->nama_alternatif }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
                             <td class="flex place-content-center text-center">
@@ -46,6 +47,17 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($alternatif->total() > 5)
+                <div class="mt-10 flex place-content-center">
+                    <div class="btn-group grid w-fit grid-cols-2">
+                        <a href="{{ $alternatif->previousPageUrl() }}" @if ($alternatif->onFirstPage()) disabled @endif
+                            class="btn btn-outline btn-sm">Previous</a>
+
+                        <a href="{{ $alternatif->nextPageUrl() }}"@if (!$alternatif->hasMorePages()) disabled @endif
+                            class="btn btn-outline btn-sm">Next</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

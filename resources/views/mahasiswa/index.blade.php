@@ -44,6 +44,20 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($mahasiswa->total() > 5)
+                <div class="mt-10 flex place-content-center">
+                    <div class="btn-group grid w-fit grid-cols-2">
+
+                        <a href="{{ $mahasiswa->previousPageUrl() }}" @if ($mahasiswa->onFirstPage()) disabled @endif
+                            class="btn btn-outline btn-sm">Previous</a>
+
+
+                        <a href="{{ $mahasiswa->nextPageUrl() }}"@if (!$mahasiswa->hasMorePages()) disabled @endif
+                            class="btn btn-outline btn-sm">Next</a>
+
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

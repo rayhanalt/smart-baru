@@ -52,7 +52,9 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
-
+                            @foreach ($util as $utils)
+                                <td>{{ $utils->nilai_utility }}</td>
+                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>

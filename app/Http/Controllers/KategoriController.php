@@ -14,7 +14,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('kategori.index',[
+        return view('kategori.index', [
             'kategori' => kategori::get()
         ]);
     }
@@ -26,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategori.create',[
+        return view('kategori.create', [
             'kategori' => kategori::get()
         ]);
     }
@@ -43,7 +43,7 @@ class KategoriController extends Controller
             'nama_kategori' => 'required',
         ]);
         kategori::create($validasi);
-       
+
         return redirect('/kategori')->with('success', 'New Data has been added!')->withInput();
     }
 
@@ -66,7 +66,7 @@ class KategoriController extends Controller
      */
     public function edit(kategori $kategori)
     {
-        return view('kategori.edit',[
+        return view('kategori.edit', [
             'item' => $kategori,
             'kategori' => kategori::get()
         ]);
@@ -85,7 +85,7 @@ class KategoriController extends Controller
             'nama_kategori' => 'required',
         ]);
         $kategori->update($validasi);
-       
+
         return redirect('/kategori')->with('success', 'Data has been updated!')->withInput();
     }
 
@@ -98,6 +98,6 @@ class KategoriController extends Controller
     public function destroy(kategori $kategori)
     {
         $kategori->delete();
-        return redirect('/kategori')->with('success', 'Data has been deleted!');
+        return redirect()->back()->with('success', 'Data has been deleted!');
     }
 }
