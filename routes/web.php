@@ -68,9 +68,9 @@ Route::controller(SpkController::class)->group(function () {
     Route::get('/spk/hasil', 'hasil_kategori')->middleware('guest');
     Route::get('/spk/hasil-alternatif', 'hasil_alternatif')->middleware('guest');
     Route::get('/spk/spk/{kriteria}', 'spk')->middleware('guest');
-    Route::post('/spk/spk/{kriteria}', 'store')->middleware('guest');
     Route::get('/spk/spk-alternatif/{kriteria}', 'spkAlternatif')->middleware('guest');
-    Route::post('/spk/spk-alternatif/{kriteria}', 'storeAlternatif')->middleware('guest');
+    Route::post('/spk/spk/{kriteria}', 'store');
+    Route::post('/spk/spk-alternatif/{kriteria}', 'storeAlternatif');
 });
 
 Route::controller(AlurController::class)->group(function () {
