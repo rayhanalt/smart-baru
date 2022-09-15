@@ -16,9 +16,7 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        return view('alternatif.index', [
-            'alternatif' => alternatif::with('kategori')->orderBy('kode_kategori')->Paginate(5)->withQueryString(),
-        ]);
+        return view('alternatif.index');
     }
 
     /**

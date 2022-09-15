@@ -22,9 +22,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.index', [
-            'mahasiswa' => mahasiswa::Paginate(5)->withQueryString()
-        ]);
+        return view('mahasiswa.index');
     }
 
     /**
@@ -118,7 +116,12 @@ class MahasiswaController extends Controller
         if ($request->nim != $mahasiswa->nim) {
             $rules['nim'] = 'required|size:9|unique:mahasiswa';
         }
+        kategori_benefit::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+        kategori_utility::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+        kategori_final::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+
         $validasi = $request->validate($rules);
+
 
         $mahasiswa->update($validasi);
 
