@@ -65,11 +65,11 @@ Route::get('pdf-mahasiswa', [MahasiswaController::class, 'createPDF'])->middlewa
 //spk
 Route::controller(SpkController::class)->group(function () {
     Route::get('/spk/spk', 'spk')->middleware('guest');
-    Route::get('/spk/hasil', 'hasil_kategori')->middleware('guest');
-    Route::get('/spk/hasil-alternatif', 'hasil_alternatif')->middleware('guest');
     Route::get('/spk/spk/{kriteria}', 'spk')->middleware('guest');
-    Route::get('/spk/spk-alternatif/{kriteria}', 'spkAlternatif')->middleware('guest');
     Route::post('/spk/spk/{kriteria}', 'store');
+    Route::get('/spk/hasil', 'hasil_kategori')->middleware('guest');
+    Route::get('/spk/spk-alternatif/{kriteria}', 'spkAlternatif')->middleware('guest');
+    Route::get('/spk/hasil-alternatif', 'hasil_alternatif')->middleware('guest');
     Route::post('/spk/spk-alternatif/{kriteria}', 'storeAlternatif');
 });
 
