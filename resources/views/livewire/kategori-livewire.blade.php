@@ -32,7 +32,7 @@
             @endforeach
         </tbody>
     </table>
-    @if ($kategori->total() > 5)
+    @if ($kategori->total() >= 5)
         <div class="mt-10 flex place-content-center">
             <div class="btn-group grid w-fit grid-cols-2">
                 <button wire:click="previousPage" @if ($kategori->onFirstPage()) disabled @endif

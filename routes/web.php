@@ -53,6 +53,7 @@ Route::resource('/kriteria', KriteriaController::class)->except('show', 'create'
 
 // kategori
 Route::resource('/kategori', KategoriController::class)->except('show')->middleware('auth');
+Route::get('pdf-kategori', [KategoriController::class, 'createPDF'])->middleware('auth');
 
 // alternatif
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');

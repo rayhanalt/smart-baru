@@ -36,7 +36,7 @@
             @endforeach
         </tbody>
     </table>
-    @if ($mahasiswa->total() > 5)
+    @if ($mahasiswa->total() >= 5)
         <div class="mt-10 flex place-content-center">
             <div class="btn-group grid w-fit grid-cols-2">
 

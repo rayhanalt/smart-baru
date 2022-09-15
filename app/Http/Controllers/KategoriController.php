@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kategori;
+use PDF;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -97,5 +98,19 @@ class KategoriController extends Controller
     {
         $kategori->delete();
         return redirect()->back()->with('success', 'Data has been deleted!');
+    }
+
+    public function createPDF()
+    {
+        $users = kategori::get();
+
+        $data = [
+            'title' => 'Laporan Data Kategori',
+            'date' => date('m/d/Y'),
+            'users' => $users,
+        ];
+        $pdf = PDF::loadView('kategori.pdf', $data);
+        $set = $pdf->setPaper('a4', 'portrait');
+        return $set->stream('kategori.pdf');
     }
 }
