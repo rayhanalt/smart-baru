@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\kategori;
 use App\Models\kategori_benefit;
+use App\Models\alternatif_benefit;
 use PDF;
 use App\Models\mahasiswa;
 use App\Models\kategori_final;
+use App\Models\alternatif_final;
 use App\Models\kategori_utility;
+use App\Models\alternatif_utility;
 use App\Models\kriteria;
 use Illuminate\Http\Request;
 
@@ -63,12 +66,19 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        $total =  kategori_final::select(DB::raw('SUM(nilai_akhir) as total,kode_kategori,nim'))
+        $total_kategori =  kategori_final::select(DB::raw('SUM(nilai_akhir) as total,kode_kategori,nim'))
             ->with('kategori', 'mahasiswa')
             ->where('nim', $mahasiswa->nim)
             ->groupBy('kode_kategori')
             ->orderBy('total', 'DESC')
             ->get();
+        $total_alternatif =  alternatif_final::select(DB::raw('SUM(nilai_akhir) as total,kode_alternatif,nim'))
+            ->with('alternatif', 'mahasiswa')
+            ->where('nim', $mahasiswa->nim)
+            ->groupBy('kode_alternatif')
+            ->orderBy('total', 'DESC')
+            ->get();
+
         $kriteria = kriteria::get();
         $utiliti = kategori_utility::select(DB::raw('nilai_utility,nim,kode_kriteria,kode_kategori'))
             ->with('kriteria', 'mahasiswa', 'kategori')
@@ -79,7 +89,8 @@ class MahasiswaController extends Controller
         // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
 
         return view('mahasiswa.show', [
-            'total' => $total,
+            'total_kategori' => $total_kategori,
+            'total_alternatif' => $total_alternatif,
             // 'maha' => $maha,
             'util' => $utiliti,
             'kriteria' => $kriteria,
@@ -116,9 +127,13 @@ class MahasiswaController extends Controller
         if ($request->nim != $mahasiswa->nim) {
             $rules['nim'] = 'required|size:9|unique:mahasiswa';
         }
+
         kategori_benefit::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
         kategori_utility::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
         kategori_final::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+        alternatif_benefit::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+        alternatif_utility::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
+        alternatif_final::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
 
         $validasi = $request->validate($rules);
 
@@ -139,6 +154,9 @@ class MahasiswaController extends Controller
         kategori_benefit::where('nim', $mahasiswa->nim)->delete();
         kategori_utility::where('nim', $mahasiswa->nim)->delete();
         kategori_final::where('nim', $mahasiswa->nim)->delete();
+        alternatif_benefit::where('nim', $mahasiswa->nim)->delete();
+        alternatif_utility::where('nim', $mahasiswa->nim)->delete();
+        alternatif_final::where('nim', $mahasiswa->nim)->delete();
         $mahasiswa->delete();
 
 

@@ -10,7 +10,6 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\dashboardController;
-use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,8 +66,11 @@ Route::get('pdf-mahasiswa', [MahasiswaController::class, 'createPDF'])->middlewa
 Route::controller(SpkController::class)->group(function () {
     Route::get('/spk/spk', 'spk')->middleware('guest');
     Route::get('/spk/hasil', 'hasil_kategori')->middleware('guest');
+    Route::get('/spk/hasil-alternatif', 'hasil_alternatif')->middleware('guest');
     Route::get('/spk/spk/{kriteria}', 'spk')->middleware('guest');
     Route::post('/spk/spk/{kriteria}', 'store')->middleware('guest');
+    Route::get('/spk/spk-alternatif/{kriteria}', 'spkAlternatif')->middleware('guest');
+    Route::post('/spk/spk-alternatif/{kriteria}', 'storeAlternatif')->middleware('guest');
 });
 
 Route::controller(AlurController::class)->group(function () {
@@ -76,4 +78,5 @@ Route::controller(AlurController::class)->group(function () {
     Route::get('/spk/alur', 'alur')->middleware('guest');
     Route::post('/hapus', 'hapus');
     Route::get('/hapus', 'hapus')->middleware('guest');
+    Route::post('/spk/hasil', 'alurAlternatif');
 });

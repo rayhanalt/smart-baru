@@ -38,7 +38,7 @@
                 </div>
                 <div class="stat-title">Jumlah Data Mahasiswa</div>
                 <div class="stat-value">{{ $mahasiswa }}</div>
-                <div class="stat-desc">{{ $mwaktu->toDayDateTimeString() }}</div>
+                {{-- <div class="stat-desc">{{ $mwaktu->toDayDateTimeString() }}</div> --}}
             </div>
 
             <div class="stat">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="stat-title">Jumlah Data Kategori</div>
                 <div class="stat-value">{{ $kategori }}</div>
-                <div class="stat-desc">{{ $kwaktu->toDayDateTimeString() }}</div>
+                {{-- <div class="stat-desc">{{ $kwaktu->toDayDateTimeString() }}</div> --}}
             </div>
 
             <div class="stat">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="stat-title">Jumlah Data Alternatif</div>
                 <div class="stat-value">{{ $alternatif }}</div>
-                <div class="stat-desc">{{ $awaktu->toDayDateTimeString() }}</div>
+                {{-- <div class="stat-desc">{{ $awaktu->toDayDateTimeString() }}</div> --}}
             </div>
 
         </div>

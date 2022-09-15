@@ -35,7 +35,15 @@ class AlurController extends Controller
 
     public function hapus(Request $request)
     {
-        $request->session()->forget('nim', 'nama');
+        $request->session()->flush();
         return redirect('/')->with('blocked', 'Sesi telah berakhir')->withInput();
+    }
+    public function alurAlternatif(Request $request)
+    {
+        session()->put([
+            'kode_kategori' => $request->kode_kategori
+        ]);
+        $kriteria = kriteria::first();
+        return redirect("/spk/spk-alternatif/{$kriteria->kode_kriteria}")->with('success', 'Sesi pengambilan keputusan UKM dimulai')->withInput();
     }
 }
