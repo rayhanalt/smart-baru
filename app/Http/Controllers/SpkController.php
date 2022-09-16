@@ -228,7 +228,7 @@ class SpkController extends Controller
             }
         }
 
-        return redirect("/spk/hasil-alternatif")->with('success', 'Berikut Hasil Rekomendasi alternatif')->withInput();
+        return redirect("/spk/hasil-alternatif")->with('success', 'Berikut Hasil Rekomendasi UKM')->withInput();
     }
     public function hasil_alternatif()
     {

@@ -3,7 +3,7 @@
     <div class="flex place-content-center">
         <div class="card bg-base-100 w-auto shadow-xl lg:w-1/2">
             <div class="card-body">
-                <h3 class="text-lg font-bold">Pilih Parameter</h3>
+                <h3 class="text-lg font-bold">Pilih Parameter dalam kriteria {{ $kriteria->nama_kriteria }}</h3>
                 <hr>
                 <form action="/spk/spk/{{ $kriteria->kode_kriteria }}" method="post">
                     @csrf

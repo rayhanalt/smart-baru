@@ -6,7 +6,7 @@
                 <h3 class="text-lg font-bold">Pilih Parameter Untuk UKM Dalam Kategori @foreach ($alternatif as $item)
                         {{ $item->kategori->nama_kategori }}
                     @break
-                @endforeach
+                @endforeach untuk kriteria {{ $kriteria->nama_kriteria }}
             </h3>
 
             <hr>
