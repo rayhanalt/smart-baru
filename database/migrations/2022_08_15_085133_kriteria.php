@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_kriteria')->unique();
             $table->string('nama_kriteria');
-            $table->decimal('bobot');
+            $table->float('bobot');
             $table->timestamps();
         });
     }

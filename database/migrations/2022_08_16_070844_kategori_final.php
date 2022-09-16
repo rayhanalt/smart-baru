@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('kode_utility_kategori');
             $table->string('kode_kriteria');
             $table->string('nim');
-            $table->decimal('nilai_akhir');
+            $table->float('nilai_akhir', 9, 5);
             $table->timestamps();
         });
     }

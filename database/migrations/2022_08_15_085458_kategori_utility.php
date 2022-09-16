@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('kode_benefit_kategori');
             $table->string('kode_kriteria');
             $table->string('nim');
-            $table->decimal('nilai_utility');
+            $table->float('nilai_utility', 9, 5);
             $table->timestamps();
         });
     }

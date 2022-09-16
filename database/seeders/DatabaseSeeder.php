@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\alternatif;
 use App\Models\kategori;
 use App\Models\kriteria;
 use App\Models\User;
@@ -55,6 +56,23 @@ class DatabaseSeeder extends Seeder
         ]);
         kategori::create([
             'nama_kategori' => 'akademik'
+        ]);
+        $kategori = kategori::where('nama_kategori', 'olahraga')->first();
+        alternatif::create([
+            'nama_alternatif' => 'Basket',
+            'kode_kategori' => $kategori->kode_kategori
+        ]);
+        alternatif::create([
+            'nama_alternatif' => 'Volly',
+            'kode_kategori' => $kategori->kode_kategori
+        ]);
+        alternatif::create([
+            'nama_alternatif' => 'Tapak Suci',
+            'kode_kategori' => $kategori->kode_kategori
+        ]);
+        alternatif::create([
+            'nama_alternatif' => 'Futsal',
+            'kode_kategori' => $kategori->kode_kategori
         ]);
     }
 }
