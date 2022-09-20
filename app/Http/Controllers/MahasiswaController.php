@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
 use App\Models\kategori_benefit;
 use App\Models\alternatif_benefit;
 use PDF;
@@ -87,11 +86,13 @@ class MahasiswaController extends Controller
             ->orderBy('kode_kategori')
             ->get();
         // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
+        // $total = kategori_benefit::with('kategori')->get();
 
         return view('mahasiswa.show', [
             'total_kategori' => $total_kategori,
             'total_alternatif' => $total_alternatif,
             // 'maha' => $maha,
+            // 'total' => $total,
             'util' => $utiliti,
             'kriteria' => $kriteria,
         ]);

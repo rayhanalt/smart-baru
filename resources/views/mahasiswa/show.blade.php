@@ -69,18 +69,18 @@
                             <th>{{ $item->nama_kriteria }}</th>
                         @endforeach
                     </tr>
-                </thead>
-                <tbody> --}}
-        <!-- row 1 -->
-        {{-- @foreach ($total as $item)
+                </thead> --}}
+        {{-- <tbody>
+                    <!-- row 1 -->
+                    @foreach ($total as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->kategori->nama_kategori }}</td>
-                            @foreach ($util as $utils)
+                            <td>{{ $item->kategori->alternatif->nama_alternatif }}</td> --}}
+        {{-- @foreach ($util as $utils)
                                 <td>{{ $utils->nilai_utility }}</td>
-                            @endforeach
-                        </tr>
-                    @endforeach
+                            @endforeach --}}
+        {{-- </tr> --}}
+        {{-- @endforeach
                 </tbody>
             </table>
         </div> --}}
