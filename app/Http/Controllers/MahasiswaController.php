@@ -79,12 +79,12 @@ class MahasiswaController extends Controller
             ->get();
 
         $kriteria = kriteria::get();
-        $utiliti = kategori_utility::select(DB::raw('nilai_utility,nim,kode_kriteria,kode_kategori'))
-            ->with('kriteria', 'mahasiswa', 'kategori')
-            ->where('nim', $mahasiswa->nim)
-            ->groupBy('kode_kriteria')
-            ->orderBy('kode_kategori')
-            ->get();
+        // $utiliti = kategori_utility::select(DB::raw('nilai_utility,nim,kode_kriteria,kode_kategori'))
+        //     ->with('kriteria', 'mahasiswa', 'kategori')
+        //     ->where('nim', $mahasiswa->nim)
+        //     ->groupBy('kode_kriteria')
+        //     ->orderBy('kode_kategori')
+        //     ->get();
         // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
         // $total = kategori_benefit::with('kategori')->get();
 
@@ -93,7 +93,7 @@ class MahasiswaController extends Controller
             'total_alternatif' => $total_alternatif,
             // 'maha' => $maha,
             // 'total' => $total,
-            'util' => $utiliti,
+            // 'util' => $utiliti,
             'kriteria' => $kriteria,
         ]);
     }

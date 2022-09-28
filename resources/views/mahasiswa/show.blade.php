@@ -9,13 +9,12 @@
 <hr>
 <div class="mb-2 mt-2 flex place-content-center">
     <div
-        class="stats stats-vertical xl:stats-horizontal lg:stats-horizontal m-auto h-auto w-screen shadow-sm shadow-black">
+        class="stats stats-vertical m-auto h-auto w-screen shadow-sm shadow-black lg:stats-horizontal xl:stats-horizontal">
         <div class="stat place-items-center">
 
             <table class="table w-full">
                 {{-- head --}}
                 <thead>
-
                     <tr>
                         <th></th>
                         <th>Nama Kategori</th>
@@ -61,7 +60,6 @@
             <table class="table w-full"> --}}
         {{-- head --}}
         {{-- <thead>
-
                     <tr>
                         <th></th>
                         <th>Nama Kategori</th>
@@ -75,12 +73,12 @@
                     @foreach ($total as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->kategori->alternatif->nama_alternatif }}</td> --}}
-        {{-- @foreach ($util as $utils)
+                            <td>{{ $item->kategori->nama_kategori }}</td>
+                            @foreach ($util as $utils)
                                 <td>{{ $utils->nilai_utility }}</td>
-                            @endforeach --}}
-        {{-- </tr> --}}
-        {{-- @endforeach
+                            @endforeach
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div> --}}
