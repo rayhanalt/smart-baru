@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+
     @vite('resources/css/app.css')
     @livewireStyles
     <link href="{{ asset('aos/styles.css') }}" rel="stylesheet">
@@ -127,6 +127,7 @@
             anchorPlacement: 'center-center', // defines which position of the element regarding to window should trigger the animation
         });
     </script>
+    <script defer src="{{ asset('alpinejs/alpine.min.js') }}"></script>
     @livewireScripts
 </body>
 
