@@ -6,7 +6,8 @@
     <meta refresh="...">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="{{ asset('aos/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('aos/aos.css') }}" rel="stylesheet">
     <title>Test</title>
 </head>
 
@@ -61,7 +62,7 @@
                 <h1 data-aos="slide-down" data-aos-duration="1100" class="my-6">
                     <img src="img/login.png" alt="Login" class="mx-auto opacity-60 transition-all hover:scale-105">
                 </h1>
-                <a href="/" class="btn btn-warning btn-outline btn-sm fixed top-2 right-2 rounded-full">back</a>
+                <a href="/" class="btn-outline btn btn-warning btn-sm fixed top-2 right-2 rounded-full">back</a>
                 <form action="/login" autocomplete="off" method="post" class="mx-auto w-2/3 px-4 lg:px-0">
                     @csrf
                     <div data-aos="slide-down" data-aos-duration="1200" class="pb-2 pt-4">
@@ -90,7 +91,7 @@
         </div>
     </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ asset('aos/aos.js') }}"></script>
     <script>
         AOS.init({
             duration: 1000, // values from 0 to 3000, with step 50ms

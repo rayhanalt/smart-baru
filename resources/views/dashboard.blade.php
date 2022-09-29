@@ -1,7 +1,7 @@
 @extends('home')
 @section('content')
     <div class="mt-20 flex place-content-center lg:mt-52">
-        <div class="stats stats-vertical xl:stats-horizontal lg:stats-horizontal m-auto h-auto shadow-sm shadow-black"
+        <div class="stats stats-vertical m-auto h-auto shadow-sm shadow-black lg:stats-horizontal xl:stats-horizontal"
             data-aos="zoom-out">
             <div class="stat">
                 <div class="stat-figure text-secondary">
@@ -9,7 +9,6 @@
                     <svg width="56px" height="56px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-person-public">
 
-                        <title>601</title>
 
                         <defs></defs>
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

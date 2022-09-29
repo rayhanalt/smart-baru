@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     @vite('resources/css/app.css')
     @livewireStyles
+    <link href="{{ asset('aos/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('aos/aos.css') }}" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -21,7 +22,7 @@
                 <div class="navbar-start">
                     @if (auth()->user())
                         <div data-aos="slide-right" class="flex-none">
-                            <label for="my-drawer" class="btn btn-square btn-ghost">
+                            <label for="my-drawer" class="btn btn-ghost btn-square">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     class="inline-block h-5 w-5 stroke-current">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -53,15 +54,15 @@
                     @if (auth()->user())
                         <form action="/logout" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-outline btn-error">Logout</button>
+                            <button type="submit" class="btn-outline btn btn-error">Logout</button>
                         </form>
                     @elseif (session()->has('nim'))
                         <form action="/hapus" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-outline btn-error">Hapus Sesi</button>
+                            <button type="submit" class="btn-outline btn btn-error">Hapus Sesi</button>
                         </form>
                     @else
-                        <a href="/loginpage" class="btn btn-outline btn-info">Login</a>
+                        <a href="/loginpage" class="btn-outline btn btn-info">Login</a>
                     @endif
                 </div>
             </div>
@@ -104,7 +105,7 @@
 
         <div class="drawer-side">
             <label for="my-drawer" class="drawer-overlay"></label>
-            <ul class="menu bg-base-100 text-base-content w-80 overflow-y-auto p-4">
+            <ul class="menu w-80 overflow-y-auto bg-base-100 p-4 text-base-content">
                 <!-- Sidebar content here -->
                 <li><a class="{{ Request::is('kriteria*') ? 'active hover:bg-sky-700' : '' }}"
                         href="/kriteria">Kriteria</a></li>
@@ -118,7 +119,7 @@
             </ul>
         </div>
     </div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ asset('aos/aos.js') }}"></script>
     <script>
         AOS.init({
             duration: 1000, // values from 0 to 3000, with step 50ms
