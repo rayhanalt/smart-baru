@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="business">
+<html lang="en" class="scroll-smooth" data-theme="dracula">
 
 <head>
     <meta charset="UTF-8">
@@ -107,13 +107,13 @@
             <label for="my-drawer" class="drawer-overlay"></label>
             <ul class="menu w-80 overflow-y-auto bg-base-100 p-4 text-base-content">
                 <!-- Sidebar content here -->
-                <li><a class="{{ Request::is('kriteria*') ? 'active hover:bg-sky-700' : '' }}"
+                <li><a class="{{ Request::is('kriteria*') ? 'active hover:bg-pink-500' : '' }}"
                         href="/kriteria">Kriteria</a></li>
-                <li><a class="{{ Request::is('kategori*') ? 'active hover:bg-sky-700' : '' }}"
+                <li><a class="{{ Request::is('kategori*') ? 'active hover:bg-pink-500' : '' }}"
                         href="/kategori">Kategori</a></li>
-                <li><a class="{{ Request::is('alternatif*') ? 'active hover:bg-sky-700' : '' }}"
+                <li><a class="{{ Request::is('alternatif*') ? 'active hover:bg-pink-500' : '' }}"
                         href="/alternatif">Alternatif</a></li>
-                <li><a class="{{ Request::is('mahasiswa*') ? 'active hover:bg-sky-700' : '' }}"
+                <li><a class="{{ Request::is('mahasiswa*') ? 'active hover:bg-pink-500' : '' }}"
                         href="/mahasiswa">Mahasiswa</a></li>
 
             </ul>
