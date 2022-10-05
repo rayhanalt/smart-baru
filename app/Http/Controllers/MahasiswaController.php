@@ -94,6 +94,7 @@ class MahasiswaController extends Controller
             // 'maha' => $maha,
             // 'total' => $total,
             // 'util' => $utiliti,
+            'mahasiswa' => mahasiswa::where('nim', $mahasiswa->nim)->first(),
             'kriteria' => $kriteria,
         ]);
     }
@@ -175,5 +176,33 @@ class MahasiswaController extends Controller
         $pdf = PDF::loadView('mahasiswa.pdf', $data);
         $set = $pdf->setPaper('a4', 'portrait');
         return $set->stream('mahasiswa.pdf');
+    }
+    public function DetailPDF(mahasiswa $mahasiswa)
+    {
+        $total_kategori =  kategori_final::select(DB::raw('SUM(nilai_akhir) as total,kode_kategori,nim'))
+            ->with('kategori', 'mahasiswa')
+            ->where('nim', $mahasiswa->nim)
+            ->groupBy('kode_kategori')
+            ->orderBy('total', 'DESC')
+            ->get();
+        $total_alternatif =  alternatif_final::select(DB::raw('SUM(nilai_akhir) as total,kode_alternatif,nim'))
+            ->with('alternatif', 'mahasiswa')
+            ->where('nim', $mahasiswa->nim)
+            ->groupBy('kode_alternatif')
+            ->orderBy('total', 'DESC')
+            ->get();
+
+        $kriteria = kriteria::get();
+
+        $data = [
+            'title' => 'Laporan Data Detail ' . $mahasiswa->nama . '',
+            'date' => date('m/d/Y'),
+            'total_kategori' => $total_kategori,
+            'total_alternatif' => $total_alternatif,
+            'kriteria' => $kriteria,
+        ];
+        $pdf = PDF::loadView('mahasiswa.showpdf', $data);
+        $set = $pdf->setPaper('a4', 'portrait');
+        return $set->stream('mahasiswa.showpdf');
     }
 }

@@ -62,6 +62,7 @@ Route::get('pdf-alternatif', [AlternatifController::class, 'createPDF'])->middle
 // mahasiswa
 Route::resource('/mahasiswa', MahasiswaController::class)->except('create')->middleware('auth');
 Route::get('pdf-mahasiswa', [MahasiswaController::class, 'createPDF'])->middleware('auth');
+Route::get('detailpdf/{mahasiswa}', [MahasiswaController::class, 'DetailPDF'])->middleware('auth');
 
 //spk
 Route::controller(SpkController::class)->group(function () {
