@@ -27,13 +27,13 @@
     <p>{{ $date }}</p>
     <table class="table-bordered table">
         <tr>
-            <th>No</th>
+            <th class="text-center">No</th>
             <th>Kode Kategori</th>
             <th>Nama Kategori</th>
         </tr>
         @foreach ($users as $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $item->kode_kategori }}</td>
                 <td>{{ $item->nama_kategori }}</td>
             </tr>

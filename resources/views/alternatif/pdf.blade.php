@@ -25,15 +25,15 @@
         </tr>
     </table>
     <p>{{ $date }}</p>
-    <table class="table-bordered table">
+    <table class="table-bordered table-sm table">
         <tr>
-            <th>No</th>
+            <th class="text-center">No</th>
             <th>Nama UKM</th>
             <th>Kategori</th>
         </tr>
         @foreach ($users as $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $item->nama_alternatif }}</td>
                 <td>{{ $item->kategori->nama_kategori }}</td>
             </tr>

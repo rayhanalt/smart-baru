@@ -38,7 +38,7 @@
             <!-- row 1 -->
             @foreach ($total_kategori as $item)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $item->kategori->nama_kategori }}</td>
                     <td>{{ $item->total }}</td>
                 </tr>
@@ -62,7 +62,7 @@
         <!-- row 1 -->
         @foreach ($total_alternatif as $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $item->alternatif->nama_alternatif }}</td>
                 <td>{{ $item->total }}</td>
             </tr>
