@@ -6,6 +6,7 @@
                 <th></th>
                 <th>NIM</th>
                 <th>Nama Mahasiswa</th>
+                <th>dilakukan pada</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
                     <td>{{ $loop->iteration + $mahasiswa->FirstItem() - 1 }}</td>
                     <td>{{ $item->nim }}</td>
                     <td>{{ $item->nama }}</td>
+                    <td>{{ $item->created_at->format('D M Y') }}</td>
                     <td class="flex place-content-center text-center">
                         <a href="/mahasiswa/{{ $item->nim }}/edit" class="btn-outline btn btn-success btn-sm mr-1">
                             ✎
