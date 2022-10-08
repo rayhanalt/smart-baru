@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\kriteria;
 use App\Models\mahasiswa;
+use App\Models\alternatif_benefit;
+use App\Models\alternatif_final;
+use App\Models\alternatif_utility;
 use Illuminate\Http\Request;
 
 class AlurController extends Controller
@@ -43,6 +46,9 @@ class AlurController extends Controller
         session()->put([
             'kode_kategori' => $request->kode_kategori
         ]);
+        alternatif_benefit::where('nim', session('nim'))->delete();
+        alternatif_utility::where('nim', session('nim'))->delete();
+        alternatif_final::where('nim', session('nim'))->delete();
         $kriteria = kriteria::first();
         return redirect("/spk/spk-alternatif/{$kriteria->kode_kriteria}")->with('success', 'Sesi pengambilan keputusan UKM dimulai')->withInput();
     }

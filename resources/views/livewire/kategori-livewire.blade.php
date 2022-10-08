@@ -27,6 +27,11 @@
                                 🗑
                             </button>
                         </form>
+                        <a href="/alternatif/{{ $item->kode_kategori }}/create"
+                            class="btn-outline btn btn-primary btn-sm ml-1"
+                            title="tambah data UKM berdasarkan kategori">
+                            ➕
+                        </a>
                     </td>
                 </tr>
             @endforeach

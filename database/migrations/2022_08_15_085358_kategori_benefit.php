@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kode_kategori');
             $table->string('kode_kriteria');
             $table->string('nim');
-            $table->float('nilai_parameter', 9, 5);
+            $table->float('nilai_parameter', 9, 5)->default(0.2);
             $table->timestamps();
         });
     }

@@ -24,9 +24,10 @@ class AlternatifController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(kategori $kategori)
     {
         return view('alternatif.create', [
+            'item' => $kategori,
             'alternatif' => alternatif::get(),
             'kategori' => kategori::get()
         ]);
@@ -46,7 +47,7 @@ class AlternatifController extends Controller
         ]);
         alternatif::create($validasi);
 
-        return redirect('/alternatif')->with('success', 'New Data has been added!')->withInput();
+        return redirect('/kategori')->with('success', 'New Data has been added!')->withInput();
     }
 
     /**

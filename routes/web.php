@@ -57,6 +57,7 @@ Route::get('pdf-kategori', [KategoriController::class, 'createPDF'])->middleware
 
 // alternatif
 Route::resource('/alternatif', AlternatifController::class)->except('show')->middleware('auth');
+Route::get('/alternatif/{kategori}/create', [AlternatifController::class, 'create'])->middleware('auth');
 Route::get('pdf-alternatif', [AlternatifController::class, 'createPDF'])->middleware('auth');
 
 // mahasiswa
