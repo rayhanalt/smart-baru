@@ -44,8 +44,8 @@
                         </tbody>
                     </table>
                     <div class="mt-2 flex justify-end">
-                        <button type="reset" class="btn-outline btn btn-error btn-sm">reset</button>
-                        <button type="submit" class="btn-outline btn btn-success btn-sm ml-2">Next</button>
+                        <button type="reset" class="btn-outline btn-error btn-sm btn">reset</button>
+                        <button type="submit" class="btn-outline btn-success btn-sm btn ml-2">Next</button>
                     </div>
                 </form>
             </div>
