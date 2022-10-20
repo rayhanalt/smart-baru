@@ -14,9 +14,6 @@ class dashboardController extends Controller
             'kategori' => kategori::count(),
             'alternatif' => alternatif::count(),
             'mahasiswa' => mahasiswa::count(),
-            // 'mwaktu' => mahasiswa::get()->last()->updated_at,
-            // 'kwaktu' => kategori::get()->last()->updated_at,
-            // 'awaktu' => alternatif::get()->last()->updated_at,
         ]);
     }
 }

@@ -1,7 +1,7 @@
 @extends('home')
 @section('content')
     <div class="mt-20 flex place-content-center">
-        <div class="card bg-base-100 w-auto shadow-xl lg:w-1/2">
+        <div class="card w-auto bg-base-100 shadow-xl lg:w-1/2">
             <div class="card-body">
                 <form action="/spk/hasil" class="mt-1" enctype="multipart/form-data" method="post">
                     @csrf
@@ -26,10 +26,8 @@
                                     </td>
                                     <td>{{ $item->total }}</td>
                                     <td>
-                                        <button class="btn btn-outline btn-success btn-sm mr-1" type="submit"
+                                        <button class="btn-outline btn-success btn-sm btn mr-1" type="submit"
                                             name="kode_kategori" value="{{ $item->kode_kategori }}">Mulai</button>
-                                        {{-- <input class="btn btn-outline btn-success btn-sm mr-1" type="submit"
-                                            name="kode_kategori" value="{{ $item->kode_kategori }}"> --}}
                                     </td>
                                 </tr>
                             @endforeach

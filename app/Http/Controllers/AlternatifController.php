@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\kategori;
 use App\Models\alternatif;
+use App\Models\alternatif_benefit;
+use App\Models\alternatif_final;
+use App\Models\alternatif_utility;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -90,6 +93,7 @@ class AlternatifController extends Controller
             'nama_alternatif' => 'required',
             'kode_kategori' => 'required',
         ]);
+
         $alternatif->update($validasi);
 
         return redirect('/alternatif')->with('success', 'Data has been updated!')->withInput();
@@ -103,6 +107,10 @@ class AlternatifController extends Controller
      */
     public function destroy(alternatif $alternatif)
     {
+        alternatif_final::where('kode_alternatif', $alternatif->kode_alternatif)->delete();
+        alternatif_utility::where('kode_alternatif', $alternatif->kode_alternatif)->delete();
+        alternatif_benefit::where('kode_alternatif', $alternatif->kode_alternatif)->delete();
+
         $alternatif->delete();
 
         return redirect()->back()->with('success', 'Data has been deleted!');
@@ -116,6 +124,7 @@ class AlternatifController extends Controller
             'date' => date('m/d/Y'),
             'users' => $users,
         ];
+
         $pdf = PDF::loadView('alternatif.pdf', $data);
         $set = $pdf->setPaper('a4', 'portrait');
         return $set->stream('alternatif.pdf');

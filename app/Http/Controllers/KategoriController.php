@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\alternatif;
+use App\Models\alternatif_benefit;
+use App\Models\alternatif_final;
+use App\Models\alternatif_utility;
 use App\Models\kategori;
+use App\Models\kategori_benefit;
+use App\Models\kategori_final;
+use App\Models\kategori_utility;
 use PDF;
 use Illuminate\Http\Request;
 
@@ -96,7 +103,20 @@ class KategoriController extends Controller
      */
     public function destroy(kategori $kategori)
     {
+        $kode_alternatif = alternatif::where('kode_kategori', $kategori->kode_kategori)->get();
+        foreach ($kode_alternatif as $alter) {
+            alternatif_final::where('kode_alternatif', $alter->kode_alternatif)->delete();
+            alternatif_utility::where('kode_alternatif', $alter->kode_alternatif)->delete();
+            alternatif_benefit::where('kode_alternatif', $alter->kode_alternatif)->delete();
+        }
+
+        alternatif::where('kode_kategori', $kategori->kode_kategori)->delete();
+        kategori_benefit::where('kode_kategori', $kategori->kode_kategori)->delete();
+        kategori_utility::where('kode_kategori', $kategori->kode_kategori)->delete();
+        kategori_final::where('kode_kategori', $kategori->kode_kategori)->delete();
+
         $kategori->delete();
+
         return redirect()->back()->with('success', 'Data has been deleted!');
     }
 
@@ -109,6 +129,7 @@ class KategoriController extends Controller
             'date' => date('m/d/Y'),
             'users' => $users,
         ];
+
         $pdf = PDF::loadView('kategori.pdf', $data);
         $set = $pdf->setPaper('a4', 'portrait');
         return $set->stream('kategori.pdf');

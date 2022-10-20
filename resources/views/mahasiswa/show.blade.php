@@ -2,8 +2,7 @@
 @section('content')
     <div class="mb-2 mr-2 flex place-content-end" data-aos="slide-up" data-aos-duration="1000"
         data-aos-easing="ease-in-out-cubic">
-        <a href="/detailpdf/{{ $mahasiswa->nim }}" class="btn-outline btn btn-secondary btn-sm">📇 Print
-            {{-- <input type="hidden" name="nim" value=""> --}}
+        <a href="/detailpdf/{{ $mahasiswa->nim }}" class="btn-outline btn-secondary btn-sm btn">📇 Print
         </a>
     </div>
     <h3 class="text-lg font-bold">
@@ -68,32 +67,7 @@
             </tbody>
         </table>
     </div>
-    {{-- <div class="stat place-items-center">
-            <table class="table w-full"> --}}
-    {{-- head --}}
-    {{-- <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nama Kategori</th>
-                        @foreach ($kriteria as $item)
-                            <th>{{ $item->nama_kriteria }}</th>
-                        @endforeach
-                    </tr>
-                </thead> --}}
-    {{-- <tbody>
-                    <!-- row 1 -->
-                    @foreach ($total as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->kategori->nama_kategori }}</td>
-                            @foreach ($util as $utils)
-                                <td>{{ $utils->nilai_utility }}</td>
-                            @endforeach
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div> --}}
+
 </div>
 </div>
 @endsection

@@ -14,7 +14,7 @@ class KriteriaController extends Controller
      */
     public function index()
     {
-        return view('kriteria.index',[
+        return view('kriteria.index', [
             'kriteria' => kriteria::get()
         ]);
     }
@@ -26,7 +26,7 @@ class KriteriaController extends Controller
      */
     public function create()
     {
-        return view('kriteria.create',[
+        return view('kriteria.create', [
             'kriteria' => kriteria::get()
         ]);
     }
@@ -43,8 +43,9 @@ class KriteriaController extends Controller
             'nama_kriteria' => 'required',
             'bobot' => 'required|numeric',
         ]);
+
         kriteria::create($validasi);
-       
+
         return redirect('/kriteria')->with('success', 'New Data has been added!')->withInput();
     }
 
@@ -67,7 +68,7 @@ class KriteriaController extends Controller
      */
     public function edit(kriteria $kriterium)
     {
-        return view('kriteria.edit',[
+        return view('kriteria.edit', [
             'item' => $kriterium,
             'kriteria' => kriteria::get()
         ]);
@@ -86,8 +87,9 @@ class KriteriaController extends Controller
             'nama_kriteria' => 'required',
             'bobot' => 'required|numeric',
         ]);
+
         $kriterium->update($validasi);
-       
+
         return redirect('/kriteria')->with('success', 'Data has been updated!')->withInput();
     }
 

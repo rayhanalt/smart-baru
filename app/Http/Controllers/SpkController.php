@@ -122,13 +122,10 @@ class SpkController extends Controller
             ->groupBy('kode_kategori')
             ->orderBy('total', 'DESC')
             ->get();
-        // $kriteria = kriteria::first();
 
 
         return view('spk.hasil', [
             'total' => $kategori_final,
-            // 'kriteria' => $kriteria,
-            // 'row' => $row
         ]);
     }
     public function spkAlternatif(Kriteria $kriteria = null)
@@ -167,7 +164,6 @@ class SpkController extends Controller
                 $kode_kriteria_terakhir = $semua_kriteria[$index + 1]->kode_kriteria;
                 return redirect("/spk/spk-alternatif/{$kode_kriteria_terakhir}")->with('success', 'berhasil')->withInput();
             } else if ($kriteria_sekarang->kode_kriteria == $kriteria->kode_kriteria) {
-
 
 
                 $hasils = alternatif_benefit::select(DB::raw('min(nilai_parameter) as nilai_min, max(nilai_parameter) as nilai_max, kode_kriteria'))
@@ -238,14 +234,12 @@ class SpkController extends Controller
             ->groupBy('kode_alternatif')
             ->orderBy('total', 'DESC')
             ->get();
-        // $kriteria = kriteria::first();
+
         $kategori = kategori::where('kode_kategori', session('kode_kategori'))->first();
 
         return view('spk.hasil-alternatif', [
             'total' => $alternatif_final,
             'kategori' => $kategori,
-            // 'kriteria' => $kriteria,
-            // 'row' => $row
         ]);
     }
 }

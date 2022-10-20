@@ -46,10 +46,13 @@ class AlurController extends Controller
         session()->put([
             'kode_kategori' => $request->kode_kategori
         ]);
+
         alternatif_benefit::where('nim', session('nim'))->delete();
         alternatif_utility::where('nim', session('nim'))->delete();
         alternatif_final::where('nim', session('nim'))->delete();
+
         $kriteria = kriteria::first();
+
         return redirect("/spk/spk-alternatif/{$kriteria->kode_kriteria}")->with('success', 'Sesi pengambilan keputusan UKM dimulai')->withInput();
     }
 }

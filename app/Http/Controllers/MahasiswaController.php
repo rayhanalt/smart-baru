@@ -52,6 +52,7 @@ class MahasiswaController extends Controller
             'nim' => 'required|size:9|unique:mahasiswa',
             'nama' => 'required',
         ]);
+
         mahasiswa::create($validasi);
 
         return redirect('/mahasiswa')->with('success', 'New Data has been added!')->withInput();
@@ -79,21 +80,10 @@ class MahasiswaController extends Controller
             ->get();
 
         $kriteria = kriteria::get();
-        // $utiliti = kategori_utility::select(DB::raw('nilai_utility,nim,kode_kriteria,kode_kategori'))
-        //     ->with('kriteria', 'mahasiswa', 'kategori')
-        //     ->where('nim', $mahasiswa->nim)
-        //     ->groupBy('kode_kriteria')
-        //     ->orderBy('kode_kategori')
-        //     ->get();
-        // $maha = mahasiswa::select('nama')->where('nim', $mahasiswa->nim)->first();
-        // $total = kategori_benefit::with('kategori')->get();
 
         return view('mahasiswa.show', [
             'total_kategori' => $total_kategori,
             'total_alternatif' => $total_alternatif,
-            // 'maha' => $maha,
-            // 'total' => $total,
-            // 'util' => $utiliti,
             'mahasiswa' => mahasiswa::where('nim', $mahasiswa->nim)->first(),
             'kriteria' => $kriteria,
         ]);
@@ -159,8 +149,8 @@ class MahasiswaController extends Controller
         alternatif_benefit::where('nim', $mahasiswa->nim)->delete();
         alternatif_utility::where('nim', $mahasiswa->nim)->delete();
         alternatif_final::where('nim', $mahasiswa->nim)->delete();
-        $mahasiswa->delete();
 
+        $mahasiswa->delete();
 
         return redirect()->back()->with('success', 'Data has been deleted!')->withInput();
     }
