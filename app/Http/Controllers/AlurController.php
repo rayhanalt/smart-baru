@@ -18,7 +18,7 @@ class AlurController extends Controller
         $input = mahasiswa::where('nim', '=', $request->input('nim'))->first();
         if ($input === null) {
             $validasi = $request->validate([
-                'nim' => 'required|size:9|unique:mahasiswa',
+                'nim' => 'required|digits:9|unique:mahasiswa',
                 'nama' => 'required',
             ]);
             mahasiswa::create($validasi);

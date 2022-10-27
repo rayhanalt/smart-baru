@@ -113,11 +113,11 @@ class MahasiswaController extends Controller
     public function update(Request $request, mahasiswa $mahasiswa)
     {
         $rules = [
-            'nim' => 'required|size:9',
+            'nim' => 'required|digits:9',
             'nama' => 'required'
         ];
         if ($request->nim != $mahasiswa->nim) {
-            $rules['nim'] = 'required|size:9|unique:mahasiswa';
+            $rules['nim'] = 'required|digits:9|unique:mahasiswa';
         }
 
         kategori_benefit::where('nim', $mahasiswa->nim)->update(['nim' => $request->nim]);
