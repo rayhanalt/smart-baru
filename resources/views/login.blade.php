@@ -62,7 +62,7 @@
                 <h1 data-aos="slide-down" data-aos-duration="1100" class="my-6">
                     <img src="img/login.png" alt="Login" class="mx-auto opacity-60 transition-all hover:scale-105">
                 </h1>
-                <a href="/" class="btn-outline btn btn-warning btn-sm fixed top-2 right-2 rounded-full">back</a>
+                <a href="/" class="btn-outline btn-warning btn-sm btn fixed top-2 right-2 rounded-full">back</a>
                 <form action="/login" autocomplete="off" method="post" class="mx-auto w-2/3 px-4 lg:px-0">
                     @csrf
                     <div data-aos="slide-down" data-aos-duration="1200" class="pb-2 pt-4">
