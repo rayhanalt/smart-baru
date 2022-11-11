@@ -8,6 +8,7 @@ use App\Models\alternatif_benefit;
 use App\Models\alternatif_final;
 use App\Models\alternatif_utility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 
 class AlternatifController extends Controller
@@ -49,6 +50,7 @@ class AlternatifController extends Controller
             'kode_kategori' => 'required',
         ]);
         alternatif::create($validasi);
+
 
         return redirect('/kategori')->with('success', 'New Data has been added!')->withInput();
     }

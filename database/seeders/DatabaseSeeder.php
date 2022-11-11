@@ -46,16 +46,16 @@ class DatabaseSeeder extends Seeder
             'bobot' => '0.11',
         ]);
         kategori::create([
-            'nama_kategori' => 'sains'
+            'nama_kategori' => 'Olahraga'
         ]);
         kategori::create([
-            'nama_kategori' => 'seni'
+            'nama_kategori' => 'Seni'
         ]);
         kategori::create([
-            'nama_kategori' => 'olahraga'
+            'nama_kategori' => 'Teknologi'
         ]);
         kategori::create([
-            'nama_kategori' => 'akademik'
+            'nama_kategori' => 'Voulenteer'
         ]);
         // $kategori = kategori::where('nama_kategori', 'olahraga')->first();
         // alternatif::create([
@@ -74,6 +74,6 @@ class DatabaseSeeder extends Seeder
         //     'nama_alternatif' => 'Futsal',
         //     'kode_kategori' => $kategori->kode_kategori
         // ]);
-        alternatif::factory(20)->create();
+        // alternatif::factory(20)->create();
     }
 }

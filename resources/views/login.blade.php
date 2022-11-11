@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <link href="{{ asset('aos/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('aos/aos.css') }}" rel="stylesheet">
-    <title>Test</title>
+    <title>Login</title>
 </head>
 
 <body>

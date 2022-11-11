@@ -18,13 +18,13 @@
                     <td>{{ $item->kategori->nama_kategori }}</td>
                     <td class="flex place-content-center text-center">
                         <a href="/alternatif/{{ $item->kode_alternatif }}/edit"
-                            class="btn btn-outline btn-success btn-sm mr-1">
+                            class="btn-outline btn-success btn-sm btn mr-1">
                             ✎
                         </a>
                         <form action="/alternatif/{{ $item->kode_alternatif }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-outline btn-error btn-sm"
+                            <button class="btn-outline btn-error btn-sm btn"
                                 onclick="return confirm('yakin hapus data {{ $item->nama_alternatif }} ?')">
                                 🗑
                             </button>
@@ -38,10 +38,10 @@
         <div class="mt-10 flex place-content-center">
             <div class="btn-group grid w-fit grid-cols-2">
                 <button wire:click="previousPage" @if ($alternatif->onFirstPage()) disabled @endif
-                    class="btn btn-outline btn-sm">previous</button>
+                    class="btn-outline btn-sm btn">previous</button>
 
                 <button wire:click="nextPage" @if (!$alternatif->hasMorePages()) disabled @endif
-                    class="btn btn-outline btn-sm">next</button>
+                    class="btn-outline btn-sm btn">next</button>
             </div>
         </div>
     @endif

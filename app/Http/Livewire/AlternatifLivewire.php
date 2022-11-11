@@ -12,8 +12,10 @@ class AlternatifLivewire extends Component
 
     public function render()
     {
+        $alternatif = alternatif::with('kategori')->orderBy('kode_kategori', 'asc')->orderBy('id', 'asc')->Paginate(5)->withQueryString();
+
         return view('livewire.alternatif-livewire', [
-            'alternatif' => alternatif::with('kategori')->orderBy('kode_kategori')->Paginate(5)->withQueryString(),
+            'alternatif' => $alternatif
         ]);
     }
 }

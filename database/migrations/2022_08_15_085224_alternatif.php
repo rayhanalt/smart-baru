@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('alternatif', function (Blueprint $table) {
             $table->id();
             $table->string('kode_alternatif', 12)->unique();
-            $table->string('nama_alternatif', 25);
+            $table->string('nama_alternatif', 50);
             $table->string('kode_kategori', 12);
             $table->timestamps();
         });

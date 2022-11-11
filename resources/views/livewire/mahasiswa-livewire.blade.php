@@ -30,8 +30,9 @@
                                 🗑
                             </button>
                         </form>
-                        <a href="/mahasiswa/{{ $item->nim }}" class="btn-outline btn-success btn-sm btn ml-1">
-                            👁{{-- 👀 --}}
+                        <a href="/mahasiswa/{{ $item->nim }}" class="btn-outline btn-info btn-sm btn ml-1">
+                            👁
+                            {{-- 👀 --}}
                         </a>
                     </td>
                 </tr>

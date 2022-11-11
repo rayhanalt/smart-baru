@@ -10,7 +10,8 @@
     @livewireStyles
     <link href="{{ asset('aos/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('aos/aos.css') }}" rel="stylesheet">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/ss.png') }}" />
+    <title>UMC</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <div class="navbar-start">
                     @if (auth()->user())
                         <div data-aos="slide-right" class="flex-none">
-                            <label for="my-drawer" class="btn btn-ghost btn-square">
+                            <label for="my-drawer" class="btn-ghost btn-square btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     class="inline-block h-5 w-5 stroke-current">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +36,7 @@
                         @if (auth()->user())
                             <a class="{{ Request::is('dashboard*') ? 'animate-pulse' : '' }}" href="/dashboard">
                         @endif
-                        <img class="btn btn-ghost btn-circle" src="{{ asset('img/ss.png') }}">
+                        <img class="btn-ghost btn-circle btn" src="{{ asset('img/ss.png') }}">
                         @if (auth()->user())
                             </a>
                         @endif
@@ -54,15 +55,15 @@
                     @if (auth()->user())
                         <form action="/logout" method="POST">
                             @csrf
-                            <button type="submit" class="btn-outline btn btn-error">Logout</button>
+                            <button type="submit" class="btn-outline btn-error btn">Logout</button>
                         </form>
                     @elseif (session()->has('nim'))
                         <form action="/hapus" method="POST">
                             @csrf
-                            <button type="submit" class="btn-outline btn btn-error">Hapus Sesi</button>
+                            <button type="submit" class="btn-outline btn-error btn">Hapus Sesi</button>
                         </form>
                     @else
-                        <a href="/loginpage" class="btn-outline btn btn-info">Login</a>
+                        <a href="/loginpage" class="btn-outline btn-info btn">Login</a>
                     @endif
                 </div>
             </div>
