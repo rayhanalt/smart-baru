@@ -24,7 +24,7 @@
                             <td>{{ $item->bobot }}</td>
                             <td class="flex place-content-center text-center">
                                 <a href="/kriteria/{{ $item->kode_kriteria }}/edit"
-                                    class="btn btn-outline btn-success btn-sm mr-1">
+                                    class="btn-outline btn-success btn-sm btn mr-1">
                                     ✎
                                 </a>
                                 {{-- <form action="/kriteria/{{ $item->kode_kriteria }}" method="POST">
@@ -40,15 +40,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-    {{-- Modal Create --}}
-    <input type="checkbox" id="modal-create" class="modal-toggle" @error('username') checked @enderror
-        @error('nama') checked @enderror>
-    <div class="modal">
-        <div class="modal-box relative">
-            <label for="modal-create" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-
         </div>
     </div>
 @endsection
