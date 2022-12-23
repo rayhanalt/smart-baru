@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-    <div class="flex place-content-center">
+    <div class="flex place-content-center md:mt-20">
         <div class="card w-auto bg-base-100 shadow-xl lg:w-1/2">
             <div class="card-body">
                 <h3 class="text-lg font-bold">Pilih Parameter Untuk UKM Dalam Kategori @foreach ($alternatif as $item)
@@ -51,8 +51,8 @@
                     </tbody>
                 </table>
                 <div class="mt-2 flex justify-end">
-                    <button type="reset" class="btn-outline btn btn-error btn-sm">reset</button>
-                    <button type="submit" class="btn-outline btn btn-success btn-sm ml-2">Next</button>
+                    <button type="reset" class="btn-outline btn-error btn-sm btn">reset</button>
+                    <button type="submit" class="btn-outline btn-success btn-sm btn ml-2">Next</button>
                 </div>
             </form>
         </div>

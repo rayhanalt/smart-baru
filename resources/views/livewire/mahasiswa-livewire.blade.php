@@ -1,4 +1,4 @@
-<div class="h-[470px]">
+<div class="h-[470px] overflow-x-auto">
     <table class="table w-full">
         {{-- head --}}
         <thead>

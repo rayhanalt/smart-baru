@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="halloween">
+<html lang="en" class="scroll-smooth" data-theme="emerald">
 
 <head>
     <meta charset="UTF-8">
@@ -89,7 +89,7 @@
             @endif
             @if (session()->has('success'))
                 <div class="fixed flex py-4 font-mono">
-                    <div data-aos="slide-left" class="alert alert-success fixed right-2 bottom-20 w-52 shadow-lg">
+                    <div data-aos="slide-left" class="alert alert-success fixed bottom-20 right-2 w-52 shadow-lg">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 stroke-current"
                                 fill="none" viewBox="0 0 24 24">
@@ -108,13 +108,13 @@
             <label for="my-drawer" class="drawer-overlay"></label>
             <ul class="menu w-80 overflow-y-auto bg-base-100 p-4 text-base-content">
                 <!-- Sidebar content here -->
-                <li><a class="{{ Request::is('kriteria*') ? 'active hover:bg-orange-500' : '' }}"
+                <li><a class="{{ Request::is('kriteria*') ? 'active hover:bg-green-700' : '' }}"
                         href="/kriteria">Kriteria</a></li>
-                <li><a class="{{ Request::is('kategori*') ? 'active hover:bg-orange-500' : '' }}"
+                <li><a class="{{ Request::is('kategori*') ? 'active hover:bg-green-700' : '' }}"
                         href="/kategori">Kategori</a></li>
-                <li><a class="{{ Request::is('alternatif*') ? 'active hover:bg-orange-500' : '' }}"
+                <li><a class="{{ Request::is('alternatif*') ? 'active hover:bg-green-700' : '' }}"
                         href="/alternatif">Alternatif</a></li>
-                <li><a class="{{ Request::is('mahasiswa*') ? 'active hover:bg-orange-500' : '' }}"
+                <li><a class="{{ Request::is('mahasiswa*') ? 'active hover:bg-green-700' : '' }}"
                         href="/mahasiswa">Mahasiswa</a></li>
 
             </ul>

@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-    <div class="mt-20 flex place-content-center">
+    <div class="flex place-content-center md:mt-20">
         <div class="card w-auto bg-base-100 shadow-xl lg:w-1/2">
             <div class="card-body">
                 <form action="/spk/hasil" class="mt-1" enctype="multipart/form-data" method="post">
