@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-    <div class="flex place-content-center md:mt-20">
+    <div class="mt-8 flex place-content-center md:mt-20">
         <div class="card w-auto bg-base-100 shadow-xl lg:w-1/2">
             <div class="card-body">
                 <form action="/spk/hasil" class="mt-1" enctype="multipart/form-data" method="post">
@@ -19,7 +19,7 @@
                         <tbody>
                             <!-- row 1 -->
                             @foreach ($total as $item)
-                                <tr @if ($loop->iteration == 1) class='text-red-500 font-bold' @endif>
+                                <tr @if ($loop->iteration == 1) class='text-green-500 font-bold' @endif>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         {{ $item->kategori->nama_kategori }}

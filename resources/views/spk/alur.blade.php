@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('content')
-    <div class="flex place-content-center md:mt-20">
+    <div class="mt-8 flex place-content-center md:mt-20">
         <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body">
                 <h3 class="text-lg font-bold">Isi Data</h3>

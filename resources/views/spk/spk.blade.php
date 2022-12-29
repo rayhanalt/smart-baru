@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-    <div class="flex place-content-center md:mt-20">
+    <div class="mt-8 flex place-content-center md:mt-20">
         <div class="card w-auto bg-base-100 shadow-xl lg:w-1/2">
             <div class="card-body">
                 <h3 class="text-lg font-bold">Pilih Parameter dalam kriteria {{ $kriteria->nama_kriteria }}</h3>
@@ -31,12 +31,27 @@
                                         <select class="select-bordered select select-sm w-full max-w-xs"
                                             name="nilai_parameter[{{ $item->kode_kategori }}]">
                                             <option class="text-zinc-700" selected value="0.2">Pilih untuk
-                                                {{ $item->nama_kategori }}
-                                            </option>
-                                            <option value="1">Sangat</option>
-                                            <option value="0.8">Biasa</option>
-                                            <option value="0.4">Kurang</option>
-                                            <option value="0.2">Tidak</option>
+                                                {{ $item->nama_kategori }}</option>
+                                            @if ($kriteria->kode_kriteria == 'KD-001')
+                                                <option value="1">Sangat</option>
+                                                <option value="0.8">Biasa</option>
+                                                <option value="0.4">Kurang</option>
+                                                <option value="0.2">Tidak</option>
+                                            @endif
+                                            @if ($kriteria->kode_kriteria == 'KD-002')
+                                                <option value="1">Pernah Juara 1</option>
+                                                <option value="0.8">Masuk 3 Besar</option>
+                                                <option value="0.4">Belum Pernah Juara</option>
+                                                <option value="0.2">Tidak Ada</option>
+                                            @endif
+                                            @if ($kriteria->kode_kriteria == 'KD-003')
+                                                <option value="1"> Lebih Dari 3 Tahun </option>
+                                                <option value="0.8"> 1 - 3 Tahun</option>
+                                                <option value="0.4"> 6 - 12 Bulan</option>
+                                                <option value="0.2">
+                                                    Kurang Dari 6 Bulan</option>
+                                            @endif
+
                                         </select>
                                     </td>
                                 </tr>
