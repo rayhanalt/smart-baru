@@ -45,7 +45,19 @@
                                             <option value="0.4">Kurang</option>
                                             <option value="0.2">Tidak</option>
                                         @endif
-
+                                        @if ($kriteria->kode_kriteria == 'KD-002')
+                                            <option value="1">Pernah Juara 1</option>
+                                            <option value="0.8">Masuk 3 Besar</option>
+                                            <option value="0.4">Belum Pernah Juara</option>
+                                            <option value="0.2">Tidak Ada</option>
+                                        @endif
+                                        @if ($kriteria->kode_kriteria == 'KD-003')
+                                            <option value="1"> Lebih Dari 3 Tahun </option>
+                                            <option value="0.8"> 1 - 3 Tahun</option>
+                                            <option value="0.4"> 6 - 12 Bulan</option>
+                                            <option value="0.2">
+                                                Kurang Dari 6 Bulan</option>
+                                        @endif
                                     </select>
                                 </td>
                             </tr>

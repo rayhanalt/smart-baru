@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Nama Alternatif</th>
+                <th>UKM</th>
                 <th>Kategori</th>
                 <th class="text-center">Action</th>
             </tr>
